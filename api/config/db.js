@@ -1,6 +1,6 @@
-require('./users');
+require('../users/user.model');
 const mongoose = require('mongoose');
-const dbURI = 'mongodb://localhost:27017/meanAuth';
+const dbURI = 'mongodb://localhost:27017/BookHero';
 
 mongoose.set('useCreateIndex', true);
 mongoose.connect(dbURI, {

@@ -1,4 +1,4 @@
-require('./api/models/db');
+require('./api/config/db');
 require('./api/config/passport');
 
 const cookieParser = require('cookie-parser');
@@ -8,7 +8,7 @@ const logger = require('morgan');
 const passport = require('passport');
 const path = require('path');
 
-const routesApi = require('./api/routes/index');
+const routesApi = require('./api/router');
 
 const app = express();
 
