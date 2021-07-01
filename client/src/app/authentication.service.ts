@@ -28,6 +28,20 @@ export interface TokenPayload {
 export class AuthenticationService {
   private token: string;
 
+  constructor(private http: HttpClient, private router: Router) {}
+
+  private saveToken(token: string): void {
+    localStorage.setItem('mean-token', token);
+    this.token = token;
+  }
+
+  private getToken(): string {
+    if (!this.token) {
+      this.token = localStorage.getItem('mean-token');
+    }
+    return this.token;
+  }
+
   private request(
     method: 'post' | 'get',
     type: 'login' | 'register' | 'profile',
@@ -55,18 +69,10 @@ export class AuthenticationService {
     return request;
   }
 
-  constructor(private http: HttpClient, private router: Router) {}
-
-  private saveToken(token: string): void {
-    localStorage.setItem('mean-token', token);
-    this.token = token;
-  }
-
-  private getToken(): string {
-    if (!this.token) {
-      this.token = localStorage.getItem('mean-token');
-    }
-    return this.token;
+  public logout(): void {
+    this.token = '';
+    window.localStorage.removeItem('mean-token');
+    this.router.navigateByUrl('/');
   }
 
   public getUserDetails(): UserDetails {
@@ -100,11 +106,5 @@ export class AuthenticationService {
 
   public profile(): Observable<any> {
     return this.request('get', 'profile');
-  }
-
-  public logout(): void {
-    this.token = '';
-    window.localStorage.removeItem('mean-token');
-    this.router.navigateByUrl('/');
   }
 }
