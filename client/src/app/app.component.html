@@ -1,16 +1,24 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <h1>BookHero</h1>
+    <h1 [routerLink]="'/'">Book Hero</h1>
     <span class="menu-spacer"></span>
-    <div>
-      <a mat-button [routerLink]="'/'"> Home </a>
-      <a mat-button *ngIf="!auth.isLoggedIn()" [routerLink]="'/login'"
-        >Sign in</a
-      >
-      <a mat-button *ngIf="auth.isLoggedIn()" [routerLink]="'/profile'"
-        >Profile</a
-      >
-      <a mat-button *ngIf="auth.isLoggedIn()" (click)="auth.logout()">Logout</a>
+    <div fxShow="true" fxFlex fxLayout>
+      <div fxFlex>
+        <a mat-button *ngIf="!auth.isLoggedIn()" [routerLink]="'/login'"
+          >Log in</a
+        >
+        <a mat-button *ngIf="auth.isLoggedIn()" [routerLink]="'/profile'"
+          >Profile</a
+        >
+        <a mat-button *ngIf="!auth.isLoggedIn()" [routerLink]="'/register'"
+          >Sign up</a
+        >
+      </div>
+      <div fxFlex fxLayoutAlign="flex-end center">
+        <a mat-button *ngIf="auth.isLoggedIn()" (click)="auth.logout()"
+          >Logout</a
+        >
+      </div>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
