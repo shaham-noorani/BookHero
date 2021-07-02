@@ -1,18 +1,18 @@
-<div class="navbar navbar-default">
-  <div class="container">
-    <div id="navbar-main">
-      <ul class="nav navbar-nav">
-        <li><a routerLink="/">Home</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li *ngIf="!auth.isLoggedIn()"><a routerLink="/login">Sign in</a></li>
-        <li *ngIf="auth.isLoggedIn()">
-          <a routerLink="/profile">{{ auth.getUserDetails()?.name }}</a>
-        </li>
-        <li *ngIf="auth.isLoggedIn()"><a (click)="auth.logout()">Logout</a></li>
-      </ul>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <h1>BookHero</h1>
+    <span class="menu-spacer"></span>
+    <div>
+      <a mat-button [routerLink]="'/'"> Home </a>
+      <a mat-button *ngIf="!auth.isLoggedIn()" [routerLink]="'/login'"
+        >Sign in</a
+      >
+      <a mat-button *ngIf="auth.isLoggedIn()" [routerLink]="'/profile'"
+        >Profile</a
+      >
+      <a mat-button *ngIf="auth.isLoggedIn()" (click)="auth.logout()">Logout</a>
     </div>
-  </div>
-</div>
+  </mat-toolbar-row>
+</mat-toolbar>
 
 <router-outlet></router-outlet>

@@ -1,24 +1,10 @@
-const authController = require('./auth/auth.controller');
-const userController = require('./users/user.controller');
 const express = require('express');
-const jwt = require('express-jwt');
 const router = express.Router();
 
-const auth = jwt({
-  secret: 'MY_SECRET',
-  userProperty: 'payload',
-});
+const authRouter = require('./auth/auth.router');
+const userRouter = require('./users/user.router');
 
-// profile
-router.get('/profile', auth, userController.getUser);
-
-// authentication
-router.post('/register', authController.register);
-router.post('/login', authController.login);
-
-// health
-router.get('/health', (req, res) => {
-  res.send('Server is up :)');
-});
+router.use('/user', userRouter);
+router.use('/auth', authRouter);
 
 module.exports = router;
