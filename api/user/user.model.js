@@ -20,17 +20,12 @@ const userSchema = new mongoose.Schema({
     required: false,
     default: 2,
   },
-  hash: {
-    type: String,
-    required: true,
-  },
-  salt: {
-    type: String,
-    required: true,
-  },
+  hash: String,
+  salt: String,
 });
 
 userSchema.methods.setPassword = function (password) {
+  console.log('password: ' + password);
   this.salt = crypto.randomBytes(16).toString('hex');
   this.hash = crypto
     .pbkdf2Sync(password, this.salt, 1000, 64, 'sha512')

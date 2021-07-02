@@ -10,5 +10,6 @@ const auth = jwt({
 });
 
 router.get('/', auth, controller.getUser);
+router.post('/add-to-booklist', controller.addToBooklist);
 
 module.exports = router;
