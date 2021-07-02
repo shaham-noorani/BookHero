@@ -1,6 +1,6 @@
 require('../users/user.model');
 const mongoose = require('mongoose');
-const dbURI = 'mongodb://localhost:27017/BookHero';
+const dbURI = 'mongodb://localhost:27017/bookhero';
 
 mongoose.set('useCreateIndex', true);
 mongoose.connect(dbURI, {

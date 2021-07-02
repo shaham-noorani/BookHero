@@ -34,10 +34,8 @@ module.exports.login = (req, res) => {
       res.json({
         token: token,
       });
-    }
-
-    // If user is not found
-    else {
+    } else {
+      // If user is not found
       res.status(401).json(info);
     }
   })(req, res);
