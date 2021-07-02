@@ -1,12 +1,12 @@
-<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+<div class="form-wrapper" fxLayout="row" fxLayoutAlign="center center">
   <mat-card class="box">
     <mat-card-header>
       <mat-card-title>Log in</mat-card-title>
     </mat-card-header>
 
-    <form class="example-form" (submit)="login()">
+    <form class="auth-form" (submit)="login()">
       <mat-card-content>
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="full-width">
           <input
             matInput
             type="email"
@@ -18,7 +18,7 @@
           />
         </mat-form-field>
 
-        <mat-form-field class="example-full-width">
+        <mat-form-field class="full-width">
           <input
             matInput
             type="password"

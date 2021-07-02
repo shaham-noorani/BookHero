@@ -13,7 +13,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Angular Flex Layout
-// import { FlexLayoutModule } from '@angular/flex-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 // Components
 import { RegisterComponent } from './register/register.component';
@@ -38,7 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    // FlexLayoutModule,
+    FlexLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
