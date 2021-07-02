@@ -1,4 +1,4 @@
-require('../users/user.model');
+require('../user/user.model');
 const mongoose = require('mongoose');
 const dbURI = 'mongodb://localhost:27017/bookhero';
 

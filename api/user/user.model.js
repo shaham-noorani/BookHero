@@ -2,6 +2,8 @@ const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 
+const bookModels = require('../book/book.model');
+
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -12,8 +14,20 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  hash: String,
-  salt: String,
+  bookList: [bookModels.bookListEntrySchema],
+  minutesPerPageRead: {
+    type: Number,
+    required: false,
+    default: 2,
+  },
+  hash: {
+    type: String,
+    required: true,
+  },
+  salt: {
+    type: String,
+    required: true,
+  },
 });
 
 userSchema.methods.setPassword = function (password) {

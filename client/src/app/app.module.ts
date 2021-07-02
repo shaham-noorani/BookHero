@@ -1,18 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 
+// Routing
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+// Angular Material
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterialModule } from './angular-material.module';
+import { NgModule } from '@angular/core';
+
+// FormsModule
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+// Angular Flex Layout
+// import { FlexLayoutModule } from '@angular/flex-layout';
+
+// Components
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { FlexLayoutModule } from '@angular/flex-layout';
-
-import { AngularMaterialModule } from './angular-material.module';
 
 @NgModule({
   declarations: [
