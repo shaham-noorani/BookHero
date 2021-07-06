@@ -1,3 +1,52 @@
-<mat-card>
-  <mat-card-title>Welcome to Book Hero!</mat-card-title>
-</mat-card>
+<mat-grid-list cols="3" rowHeight="40%">
+  <mat-grid-tile colspan="2" rowspan="2">
+    <h1 style="color: white; position: absolute; left: 2%; top: 5%">
+      Welcome back, Shaham Noorani!
+    </h1>
+
+    <h3 style="color: white; position: absolute; left: 2%; top: 15%">
+      Are you still reading
+      <span style="font-style: italic">The Power of Habit?</span>
+    </h3>
+    <button
+      mat-raised-button
+      color="primary"
+      style="position: absolute; left: 2%; top: 20%"
+    >
+      You can update its entry here
+    </button>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="1">
+    <mat-card style="height: 90%; width: 80%">
+      <h2>Stats</h2>
+      <mat-card-content>
+        <p>Completed: 12 books / 4200 pages</p>
+        <p>Favorite Genre: <span style="font-style: bold">Psychology</span></p>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="1">
+    <mat-card style="height: 90%; width: 80%">
+      <h2>Friend Activity</h2>
+      <mat-card-content>
+        <p>
+          John Doe is currently reading:
+          <span style="font-style: italic"
+            >How to Win Friends and Influence People</span
+          >
+          ...
+        </p>
+        <p>
+          Bryan Horne is currently reading:
+          <span style="font-style: italic">The Slight Edge</span>
+          by Jeff Olsen
+        </p>
+        <p>
+          Sally Johnson just finished:
+          <span style="font-style: italic">The Art of War</span>
+          by Sun Tzu
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

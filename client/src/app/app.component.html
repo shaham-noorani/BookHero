@@ -7,14 +7,24 @@
         <a mat-button *ngIf="!auth.isLoggedIn()" [routerLink]="'/login'"
           >Log in</a
         >
-        <a mat-button *ngIf="auth.isLoggedIn()" [routerLink]="'/profile'"
-          >Profile</a
-        >
         <a mat-button *ngIf="!auth.isLoggedIn()" [routerLink]="'/register'"
           >Sign up</a
         >
+
+        <a mat-button *ngIf="auth.isLoggedIn()" [routerLink]="'/my-list'"
+          >My List</a
+        >
+        <a mat-button *ngIf="auth.isLoggedIn()" [routerLink]="'/timeline'"
+          >Timeline</a
+        >
+        <a mat-button *ngIf="auth.isLoggedIn()" [routerLink]="'/friends'"
+          >Friends</a
+        >
       </div>
       <div fxFlex fxLayoutAlign="flex-end center">
+        <a mat-button *ngIf="auth.isLoggedIn()" [routerLink]="'/profile'"
+          >Profile</a
+        >
         <a mat-button *ngIf="auth.isLoggedIn()" (click)="auth.logout()"
           >Logout</a
         >
