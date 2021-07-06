@@ -1,3 +1,4 @@
+require('dotenv').config();
 require('./api/config/db');
 require('./api/config/passport');
 

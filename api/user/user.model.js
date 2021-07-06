@@ -25,7 +25,6 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.methods.setPassword = function (password) {
-  console.log('password: ' + password);
   this.salt = crypto.randomBytes(16).toString('hex');
   this.hash = crypto
     .pbkdf2Sync(password, this.salt, 1000, 64, 'sha512')
@@ -50,8 +49,8 @@ userSchema.methods.generateJwt = function () {
       name: this.name,
       exp: parseInt(expiry.getTime() / 1000),
     },
-    'MY_SECRET'
-  ); // DO NOT KEEP YOUR SECRET IN THE CODE!
+    process.env.APP_SECRET
+  );
 };
 
 mongoose.model('User', userSchema);

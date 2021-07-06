@@ -44,16 +44,15 @@ export class AuthenticationService {
 
   private request(
     method: 'post' | 'get',
-    type: 'login' | 'register' | 'user',
+    uri: 'auth/login' | 'auth/register' | 'user/me',
     user?: TokenPayload
   ): Observable<any> {
     let base$;
 
     if (method === 'post') {
-      base$ = this.http.post(`/api/auth/${type}`, user);
+      base$ = this.http.post(`/api/${uri}`, user);
     } else {
-      const uri = type == 'user' ? '' : 'auth/';
-      base$ = this.http.get(`/api/${uri}${type}`, {
+      base$ = this.http.get(`/api/${uri}`, {
         headers: { Authorization: `Bearer ${this.getToken()}` },
       });
     }
@@ -98,14 +97,14 @@ export class AuthenticationService {
   }
 
   public register(user: TokenPayload): Observable<any> {
-    return this.request('post', 'register', user);
+    return this.request('post', 'auth/register', user);
   }
 
   public login(user: TokenPayload): Observable<any> {
-    return this.request('post', 'login', user);
+    return this.request('post', 'auth/login', user);
   }
 
   public profile(): Observable<any> {
-    return this.request('get', 'user');
+    return this.request('get', 'user/me');
   }
 }

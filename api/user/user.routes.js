@@ -5,11 +5,15 @@ const jwt = require('express-jwt');
 var controller = require('./user.controller');
 
 const auth = jwt({
-  secret: 'MY_SECRET',
+  secret: process.env.APP_SECRET,
   userProperty: 'payload',
 });
 
-router.get('/', auth, controller.getUser);
-router.post('/add-to-booklist', controller.addToBooklist);
+// current user actions
+router.get('/me', auth, controller.getMe);
+router.post('/add-to-booklist', auth, controller.addToBooklist);
+
+// non auth user actions
+router.get('/:id', controller.getUser);
 
 module.exports = router;
