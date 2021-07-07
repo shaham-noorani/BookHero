@@ -24,8 +24,8 @@ const bookSchema = new mongoose.Schema({
     required: false,
     default: '',
   },
-  mainCategory: {
-    type: String,
+  categories: {
+    type: [String],
   },
   datePublished: {
     type: Date,
@@ -38,7 +38,10 @@ const bookListEntrySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  book: bookSchema,
+  book: {
+    type: bookSchema,
+    required: true
+  },
   status: {
     type: String,
     enum: status,
@@ -75,5 +78,8 @@ const bookListEntrySchema = new mongoose.Schema({
     required: false,
   },
 });
+
+mongoose.model('Book', bookSchema);
+mongoose.model('BookListEntry', bookListEntrySchema);
 
 module.exports.bookListEntrySchema = bookListEntrySchema;

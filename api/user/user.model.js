@@ -15,11 +15,13 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   bookList: [bookModels.bookListEntrySchema],
+  currentlyReading: bookModels.bookListEntrySchema,
   minutesPerPageRead: {
     type: Number,
     required: false,
     default: 2,
   },
+  friends: [mongoose.Schema.Types.ObjectId],
   hash: String,
   salt: String,
 });

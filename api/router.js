@@ -5,8 +5,8 @@ const authRouter = require('./auth/auth.router');
 const userRouter = require('./user/user.routes');
 const bookRouter = require('./book/book.routes');
 
-router.use('/user', userRouter);
+router.use('/users', userRouter);
 router.use('/auth', authRouter);
-router.use('/book', bookRouter);
+router.use('/books', bookRouter);
 
 module.exports = router;

@@ -44,7 +44,7 @@ export class AuthenticationService {
 
   private request(
     method: 'post' | 'get',
-    uri: 'auth/login' | 'auth/register' | 'user/me',
+    uri: 'auth/login' | 'auth/register' | 'users/me',
     user?: TokenPayload
   ): Observable<any> {
     let base$;
@@ -105,6 +105,6 @@ export class AuthenticationService {
   }
 
   public profile(): Observable<any> {
-    return this.request('get', 'user/me');
+    return this.request('get', 'users/me');
   }
 }
