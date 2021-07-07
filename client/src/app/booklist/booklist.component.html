@@ -1,0 +1,7 @@
+<mat-card *ngFor="let entry of bookList">
+  <mat-card-title>{{ entry.book.title }}</mat-card-title>
+  <mat-card-content>
+    <h3>{{ entry.status }}</h3>
+    <h3>{{ entry.book.blurb }}</h3>
+  </mat-card-content>
+</mat-card>

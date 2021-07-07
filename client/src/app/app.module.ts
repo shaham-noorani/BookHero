@@ -21,6 +21,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BooklistComponent } from './booklist/booklist.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     ProfileComponent,
     LoginComponent,
     HomeComponent,
+    BooklistComponent,
   ],
   imports: [
     BrowserModule,

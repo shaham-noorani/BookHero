@@ -17,7 +17,7 @@ const bookSchema = new mongoose.Schema({
   },
   coverImage: {
     type: String,
-    required: false,
+    required: true,
   },
   blurb: {
     type: String,
@@ -40,7 +40,7 @@ const bookListEntrySchema = new mongoose.Schema({
   },
   book: {
     type: bookSchema,
-    required: true
+    required: true,
   },
   status: {
     type: String,

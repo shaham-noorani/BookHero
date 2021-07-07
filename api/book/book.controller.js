@@ -1,8 +1,8 @@
-const { getBooksByVolumeId, getBooksByTitle } = require('../book/book.service');
+const { getBookByVolumeId, getBooksByTitle } = require('../book/book.service');
 
 module.exports.getBookById = async (req, res) => {
   if (req.params.volumeId) {
-    const book = await getBooksByVolumeId(req.params.volumeId);
+    const book = await getBookByVolumeId(req.params.volumeId);
 
     res.json(book.data);
   }
