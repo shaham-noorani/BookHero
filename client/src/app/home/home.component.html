@@ -1,20 +1,15 @@
-<mat-grid-list cols="3" rowHeight="40%">
+<mat-grid-list cols="3" rowHeight="45%">
   <mat-grid-tile colspan="2" rowspan="2">
-    <h1 style="color: white; position: absolute; left: 2%; top: 5%">
-      Welcome back, {{ user.name }}!
-    </h1>
-
-    <h3 style="color: white; position: absolute; left: 2%; top: 15%">
-      Are you still reading
-      <span style="font-style: italic">The Power of Habit?</span>
-    </h3>
-    <button
-      mat-raised-button
-      color="primary"
-      style="position: absolute; left: 2%; top: 20%"
-    >
-      You can update its entry here
-    </button>
+    <div style="position: absolute; left: 2%; top: 5%">
+      <h1 style="padding-top: 1vh">Welcome back, {{ user.name }}!</h1>
+      <h3 style="padding-top: 1vh">
+        Are you still reading
+        <span style="font-style: italic">The Power of Habit?</span>
+      </h3>
+      <button mat-raised-button color="primary" style="padding-top: 1vh">
+        You can update its entry here
+      </button>
+    </div>
   </mat-grid-tile>
   <mat-grid-tile colspan="1" rowspan="1">
     <mat-card style="height: 90%; width: 80%">

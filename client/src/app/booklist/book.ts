@@ -1,9 +1,9 @@
 const enum status {
-  completed = 'completed',
-  dropped = 'dropped',
-  on_hold = 'on-hold',
-  reading = 'reading',
-  plan_to_read = 'plan to read',
+  completed = 'Completed',
+  dropped = 'Dropped',
+  on_hold = 'On-hold',
+  reading = 'Reading',
+  plan_to_read = 'Plan to read',
 }
 
 export interface Book {

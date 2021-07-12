@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const status = ['completed', 'dropped', 'on-hold', 'reading', 'plan to read'];
+const status = ['Completed', 'Dropped', 'On-hold', 'Reading', 'Plan to read'];
 
 const bookSchema = new mongoose.Schema({
   title: {
@@ -46,7 +46,7 @@ const bookListEntrySchema = new mongoose.Schema({
     type: String,
     enum: status,
     required: true,
-    default: 'reading',
+    default: 'Reading',
   },
   notes: {
     type: String,
@@ -56,7 +56,7 @@ const bookListEntrySchema = new mongoose.Schema({
     type: Number,
     required: false,
     default: () => {
-      if (this.status == 'completed') return this.book.pageCount;
+      if (this.status == 'Completed') return this.book.pageCount;
       else return 0;
     },
   },

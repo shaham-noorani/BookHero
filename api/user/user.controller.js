@@ -23,6 +23,7 @@ module.exports.getMe = (req, res) => {
 };
 
 module.exports.addToBooklist = async (req, res) => {
+  const status = req.body.status;
   const volume = await getBookByVolumeId(req.query.volumeId);
   const volumeInfo = volume.data.volumeInfo;
 
@@ -30,16 +31,19 @@ module.exports.addToBooklist = async (req, res) => {
     title: volumeInfo.title,
     author: volumeInfo.authors[0],
     pageCount: volumeInfo.pageCount,
-    coverImage: volumeInfo.imageLinks.medium,
+    coverImage: volumeInfo.imageLinks.thumbnail,
     blurb: volumeInfo.description,
-    categories: volumeInfo.categories[0].split(' / '),
+    categories: volumeInfo.categories
+      ? volumeInfo.categories[0].split(' / ')
+      : [],
     datePublished: Date.parse(volumeInfo.publishedDate),
   });
 
   let bookEntry = new BookListEntry({
     volumeId: req.query.volumeId,
+    status: status,
     book: bookObject,
-  })
+  });
 
   console.log(req.payload);
 

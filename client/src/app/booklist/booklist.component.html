@@ -1,7 +1,45 @@
-<mat-card *ngFor="let entry of bookList">
-  <mat-card-title>{{ entry.book.title }}</mat-card-title>
-  <mat-card-content>
-    <h3>{{ entry.status }}</h3>
-    <h3>{{ entry.book.blurb }}</h3>
-  </mat-card-content>
-</mat-card>
+<mat-grid-list cols="4" rowHeight="25vh">
+  <mat-grid-tile colspan="1" rowspan="3">
+    <div class="top-container container">
+      <mat-card class="container">
+        <mat-card-title>Filters</mat-card-title>
+      </mat-card>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="2" rowspan="{{ bookList.length + 1 }}">
+    <div class="book-list-container">
+      <mat-card *ngFor="let entry of bookList" class="book-list-entry">
+        <img
+          src="{{ entry.book.coverImage }}"
+          alt=""
+          class="book-list-entry-image"
+          width="25%"
+        />
+        <div class="book-list-entry-text">
+          <mat-card-title class="book-list-entry-title">{{
+            entry.book.title
+          }}</mat-card-title>
+          <mat-card-content>
+            <h3>by {{ entry.book.author }}</h3>
+            <div class="line-clamp">
+              <p>{{ removeTags(entry.book.blurb) }}</p>
+            </div>
+          </mat-card-content>
+        </div>
+        <div [ngClass]="[entry.status, 'book-list-entry-status']"></div>
+      </mat-card>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="2">
+    <div class="add-a-book-container">
+      <mat-card class="container">
+        <mat-card-title>Add a book</mat-card-title>
+      </mat-card>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="2">
+    <mat-card class="container">
+      <mat-card-title>Stats</mat-card-title>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

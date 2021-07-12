@@ -1,0 +1,79 @@
+@import '../../styles.scss';
+@import '~@angular/material/theming';
+
+.container {
+  width: 80%;
+  height: 95%;
+  background-color: mat-color($mat-blue);
+}
+
+.book-list-entry-image {
+  position: absolute;
+  top: 4%;
+  height: 92%;
+  border-radius: 30px;
+}
+
+.book-list-entry-title {
+  font-size: 15pt;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.book-list-entry {
+  margin: 0 0 10px 0;
+  height: 25vh;
+}
+
+.book-list-entry-status {
+  position: absolute;
+  left: 95%;
+  top: 6%;
+  width: 4%;
+  height: 90%;
+  border-radius: 30px;
+}
+
+.Reading {
+  background-color: mat-color($client-primary);
+}
+
+.Completed {
+  background-color: lightgreen;
+}
+
+.On-hold {
+  background-color: lightcoral;
+}
+
+.Dropped {
+  background-color: mat-color($client-warn);
+}
+
+.Plan-to-read {
+  background-color: lightslategray;
+}
+
+.book-list-container,
+.add-a-book-container,
+.top-container {
+  height: 100%;
+  padding-top: 2.5vh;
+  width: 100%;
+}
+
+.book-list-entry-text {
+  position: absolute;
+  left: 30%;
+  top: 6%;
+  width: 60%;
+  height: 100%;
+}
+
+.line-clamp {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
