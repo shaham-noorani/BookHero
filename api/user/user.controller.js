@@ -23,7 +23,6 @@ module.exports.getMe = (req, res) => {
 };
 
 module.exports.addToBooklist = async (req, res) => {
-  const status = req.body.status;
   const volume = await getBookByVolumeId(req.query.volumeId);
   const volumeInfo = volume.data.volumeInfo;
 
@@ -39,18 +38,35 @@ module.exports.addToBooklist = async (req, res) => {
     datePublished: Date.parse(volumeInfo.publishedDate),
   });
 
-  let bookEntry = new BookListEntry({
+  let bookListEntry = new BookListEntry({
     volumeId: req.query.volumeId,
-    status: status,
+    status: req.body.status,
     book: bookObject,
+    notes: req.body.notes ? req.body.notes : '',
+    currentPageCount: req.body.currentPageCount ? req.body.currentPageCount : 0,
+    rating: req.body.rating ? req.body.rating : 0,
+    review: req.body.review ? req.body.review : '',
+    startDate: req.body.startDate ? req.body.startDate : Date.now(),
+    endDate: req.body.endDate ? req.body.endDate : Date.now() + 7,
   });
 
-  console.log(req.payload);
+  if (req.body.notes) {
+  }
+  if (req.body.currentPageCount) {
+  }
+  if (req.body.rating) {
+  }
+  if (req.body.review) {
+  }
+  if (req.body.startDate) {
+  }
+  if (req.body.endDate) {
+  }
 
   User.updateOne(
     { _id: req.payload._id },
     {
-      $addToSet: { bookList: [bookEntry] },
+      $addToSet: { bookList: [bookListEntry] },
     }
   ).exec((err, user) => {
     res.status(200).json(user);
