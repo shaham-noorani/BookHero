@@ -1,12 +1,25 @@
 <mat-grid-list cols="4" rowHeight="25vh">
   <mat-grid-tile colspan="1" rowspan="3">
-    <div class="top-container container">
-      <mat-card class="container">
-        <mat-card-title>Filters</mat-card-title>
-      </mat-card>
-    </div>
+    <mat-card class="container">
+      <mat-card-title>Filters</mat-card-title>
+      <h3>{{ filters['completed'] | json }}</h3>
+      <section style="margin: 12px 0" [formGroup]="filters">
+        <p>
+          <mat-checkbox formControlName="completed">Completed</mat-checkbox>
+        </p>
+        <p><mat-checkbox formControlName="dropped">Dropped</mat-checkbox></p>
+        <p><mat-checkbox formControlName="onHold">On-hold</mat-checkbox></p>
+        <p><mat-checkbox formControlName="reading">Reading</mat-checkbox></p>
+        <p>
+          <mat-checkbox formControlName="planToRead">Plan-to-read</mat-checkbox>
+        </p>
+      </section>
+    </mat-card>
   </mat-grid-tile>
-  <mat-grid-tile colspan="2" rowspan="{{ bookList.length + 1 }}">
+  <mat-grid-tile
+    colspan="2"
+    rowspan="{{ bookList.length < 6 ? 6 : bookList.length + 1 }}"
+  >
     <div class="book-list-container">
       <mat-card *ngFor="let entry of bookList" class="book-list-entry">
         <img
@@ -16,6 +29,9 @@
           width="25%"
         />
         <div class="book-list-entry-text">
+          <mat-card [ngClass]="[entry.status, 'book-list-entry-status-text']">{{
+            entry.status
+          }}</mat-card>
           <mat-card-title class="book-list-entry-title">{{
             entry.book.title
           }}</mat-card-title>
@@ -26,14 +42,17 @@
             </div>
           </mat-card-content>
         </div>
-        <div [ngClass]="[entry.status, 'book-list-entry-status']"></div>
+        >
       </mat-card>
+      <mat-card class="no-books" *ngIf="bookList.length == 0"
+        >Let's add some books!</mat-card
+      >
     </div>
   </mat-grid-tile>
   <mat-grid-tile colspan="1" rowspan="3">
     <div class="add-a-book-container">
       <mat-card class="container">
-        <mat-card-title>Add a book</mat-card-title>
+        <mat-card-title style="padding-bottom: 5%">Add a book</mat-card-title>
         <form>
           <mat-card-content>
             <mat-form-field class="full-width">
@@ -80,6 +99,49 @@
             <mat-form-field *ngIf="addBookStatus == 'Completed'">
               <mat-label>Review</mat-label>
               <textarea matInput></textarea>
+            </mat-form-field>
+            <mat-form-field
+              *ngIf="addBookStatus == 'Reading' || addBookStatus == 'On-hold'"
+            >
+              <input
+                matInput
+                type="text"
+                class=""
+                name="currentPage"
+                placeholder="Current Page"
+              />
+            </mat-form-field>
+            <mat-form-field
+              appearance="fill"
+              *ngIf="
+                !(addBookStatus == 'Plan-to-read' || addBookStatus == null)
+              "
+            >
+              <mat-label>Start date</mat-label>
+              <input matInput [matDatepicker]="picker" />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field
+              appearance="fill"
+              *ngIf="
+                !(
+                  addBookStatus == 'Plan-to-read' ||
+                  addBookStatus == 'Reading' ||
+                  addBookStatus == null
+                )
+              "
+            >
+              <mat-label>End date</mat-label>
+              <input matInput [matDatepicker]="picker" />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
           </mat-card-content>
           <button

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +9,7 @@ import { Observable, of } from 'rxjs';
 export class BooksService {
   constructor(private http: HttpClient, private router: Router) {}
 
-  public searchBookByTitle(title): Observable<any> {
+  public searchBookByTitle(title) {
     let base$;
 
     base$ = this.http

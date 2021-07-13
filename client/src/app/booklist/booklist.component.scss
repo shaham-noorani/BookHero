@@ -4,7 +4,6 @@
 .container {
   width: 80%;
   height: 95%;
-  background-color: mat-color($mat-blue);
 }
 
 .book-list-entry-image {
@@ -26,13 +25,26 @@
   height: 25vh;
 }
 
-.book-list-entry-status {
+.book-list-entry-status-text {
+  position: absolute;
+  right: 0%;
+  top: 0%;
+  text-align: right;
+  align-self: right;
+}
+
+.book-list-entry-status-bar {
   position: absolute;
   left: 95%;
   top: 6%;
   width: 4%;
   height: 90%;
   border-radius: 30px;
+}
+
+.no-books {
+  height: 100vh;
+  width: 80vw;
 }
 
 .Reading {
@@ -56,24 +68,28 @@
 }
 
 .book-list-container,
-.add-a-book-container,
-.top-container {
-  height: 100%;
-  padding-top: 2.5vh;
+.add-a-book-container {
   width: 100%;
+  position: absolute;
+  top: 2vh;
+  height: 95%;
+}
+
+.top-container {
+  padding-top: 2.5vh;
 }
 
 .book-list-entry-text {
   position: absolute;
   left: 30%;
   top: 6%;
-  width: 60%;
+  width: 68%;
   height: 100%;
 }
 
 .line-clamp {
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
 }
