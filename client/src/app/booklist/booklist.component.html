@@ -63,6 +63,8 @@
           </mat-card>
           <mat-card [ngClass]="['book-list-entry-category']">{{
             entry.book.categories[0]
+              ? entry.book.categories[0]
+              : 'No genre information'
           }}</mat-card>
           <mat-card-title class="book-list-entry-title">{{
             entry.book.title
