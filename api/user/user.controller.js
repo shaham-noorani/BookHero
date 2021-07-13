@@ -50,19 +50,6 @@ module.exports.addToBooklist = async (req, res) => {
     endDate: req.body.endDate ? req.body.endDate : Date.now() + 7,
   });
 
-  if (req.body.notes) {
-  }
-  if (req.body.currentPageCount) {
-  }
-  if (req.body.rating) {
-  }
-  if (req.body.review) {
-  }
-  if (req.body.startDate) {
-  }
-  if (req.body.endDate) {
-  }
-
   User.updateOne(
     { _id: req.payload._id },
     {
