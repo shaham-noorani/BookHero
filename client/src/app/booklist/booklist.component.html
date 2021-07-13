@@ -1,8 +1,7 @@
 <mat-grid-list cols="4" rowHeight="25vh">
-  <mat-grid-tile colspan="1" rowspan="3">
+  <mat-grid-tile colspan="1" rowspan="2">
     <mat-card class="container">
-      <mat-card-title style="padding-bottom: 2vh">Filters</mat-card-title>
-      <mat-divider></mat-divider>
+      <mat-card-title>Filters</mat-card-title>
       <section [formGroup]="filters">
         <p>
           <mat-checkbox color="primary" formControlName="completed"
@@ -30,7 +29,6 @@
           >
         </p>
       </section>
-      <mat-divider></mat-divider>
     </mat-card>
   </mat-grid-tile>
   <mat-grid-tile
@@ -59,7 +57,7 @@
             [ngClass]="['rating-' + entry.rating, 'book-list-entry-no-rating']"
             *ngIf="!entry.rating"
           >
-            No rating
+            No rating yet
           </mat-card>
           <mat-card [ngClass]="['book-list-entry-category']">{{
             entry.book.categories[0]
@@ -176,6 +174,13 @@
   <mat-grid-tile colspan="1" rowspan="2">
     <mat-card class="container">
       <mat-card-title>Stats</mat-card-title>
+      <mat-card-content>
+        <h3>Total books/pages read: 69/4200</h3>
+        <h3>Completed</h3>
+        <h3>Average rating: 7.2</h3>
+        <h3>Favorite Author: Dale Carnegie</h3>
+        <h3>Favorite Book: How to Win Friends and Influence People</h3>
+      </mat-card-content>
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list>
