@@ -6,6 +6,37 @@
   height: 95%;
 }
 
+.book-list-container,
+.add-a-book-container {
+  width: 100%;
+  position: absolute;
+  top: 2vh;
+  height: 95%;
+}
+
+.top-container {
+  padding-top: 2.5vh;
+}
+
+mat-checkbox {
+  ::ng-deep .mat-checkbox-label {
+    font-weight: 500;
+  }
+}
+
+section {
+  padding-top: 2vh;
+}
+
+.add-a-book-header {
+  padding-bottom: 2vh;
+}
+
+.book-list-entry {
+  margin: 0 0 10px 0;
+  height: 25vh;
+}
+
 .book-list-entry-image {
   position: absolute;
   top: 4%;
@@ -19,10 +50,12 @@
   overflow: hidden;
   white-space: nowrap;
 }
-
-.book-list-entry {
-  margin: 0 0 10px 0;
-  height: 25vh;
+.book-list-entry-text {
+  position: absolute;
+  left: 30%;
+  top: 6%;
+  width: 68%;
+  height: 100%;
 }
 
 .book-list-entry-status-text {
@@ -67,29 +100,9 @@
   background-color: lightslategray;
 }
 
-.book-list-container,
-.add-a-book-container {
-  width: 100%;
-  position: absolute;
-  top: 2vh;
-  height: 95%;
-}
-
-.top-container {
-  padding-top: 2.5vh;
-}
-
-.book-list-entry-text {
-  position: absolute;
-  left: 30%;
-  top: 6%;
-  width: 68%;
-  height: 100%;
-}
-
 .line-clamp {
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
 }

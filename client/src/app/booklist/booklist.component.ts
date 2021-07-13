@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-// import { of } from 'rxjs';
-// import { debounceTime, filter, switchMap } from 'rxjs/operators';
+
 import { AuthenticationService } from '../authentication.service';
+
 import { BookListEntry } from './book';
 import { BooksService } from '../books.service';
 
@@ -13,12 +13,12 @@ import { BooksService } from '../books.service';
 })
 export class BooklistComponent implements OnInit {
   bookList: BookListEntry[];
+
   addBookStatus: string;
   addBookRating: number;
-  searchForm: FormGroup;
-  @Input() filters: FormGroup;
 
-  statusOrder: Map<string, number> = new Map();
+  // @Input() searchForm: FormGroup;
+  @Input() filters: FormGroup;
 
   ratings = [
     { value: 10, text: '10 - masterpiece' },
@@ -32,9 +32,6 @@ export class BooklistComponent implements OnInit {
     { value: 10, text: '2 - horrible' },
     { value: 10, text: '1 - abysmal' },
   ];
-
-  searchResult = [];
-  booksName = [];
 
   constructor(
     private fb: FormBuilder,
@@ -50,40 +47,17 @@ export class BooklistComponent implements OnInit {
     });
   }
 
+  statusOrder: Map<string, number> = new Map();
   ngOnInit(): void {
     this.statusOrder.set('Completed', 1);
     this.statusOrder.set('Dropped', 2);
     this.statusOrder.set('On-hold', 3);
     this.statusOrder.set('Reading', 4);
     this.statusOrder.set('Plan-to-read', 5);
-    this.getBooklist();
 
+    this.getBooklist();
     this.onChanges();
   }
-
-  onChanges() {
-    // this.searchForm
-    //   .get('searchBar')
-    //   .valueChanges.pipe(
-    //     filter((data) => data.trim().length > 0),
-    //     debounceTime(500),
-    //     switchMap((id: string) => {
-    //       console.log('trim', id.replace(/[\s]/g, ''));
-    //       return id ? this.searchValue(id.replace(/[\s]/g, '')) : of([]);
-    //     })
-    //   )
-    //   .subscribe((data) => {
-    //     console.log(data);
-    //     this.searchResult = data as Array<{}>;
-    //   });
-    this.filters.valueChanges.subscribe((changes) => {
-      this.getBooklist();
-    });
-  }
-
-  searchValue = (value) => {
-    return this.book.searchBookByTitle(value);
-  };
 
   getBooklist = () => {
     this.auth.profile().subscribe((user) => {
@@ -101,6 +75,16 @@ export class BooklistComponent implements OnInit {
     );
   };
 
+  onChanges() {
+    this.filters.valueChanges.subscribe(() => {
+      this.getBooklist();
+    });
+  }
+
+  searchValue = (value) => {
+    return this.book.searchBookByTitle(value);
+  };
+
   removeTags = (str) => {
     if (str === null || str === '') return false;
     else str = str.toString();
@@ -112,7 +96,6 @@ export class BooklistComponent implements OnInit {
   };
 
   canDisplay = (status): boolean => {
-    console.log(status);
     if (status == 'Completed') return this.filters.value.completed;
     if (status == 'Dropped') return this.filters.value.dropped;
     if (status == 'On-hold') return this.filters.value.onHold;

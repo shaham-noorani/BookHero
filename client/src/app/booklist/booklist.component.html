@@ -2,16 +2,31 @@
   <mat-grid-tile colspan="1" rowspan="3">
     <mat-card class="container">
       <mat-card-title>Filters</mat-card-title>
-      <h3>{{ filters['completed'] | json }}</h3>
-      <section style="margin: 12px 0" [formGroup]="filters">
+      <section [formGroup]="filters">
         <p>
-          <mat-checkbox formControlName="completed">Completed</mat-checkbox>
+          <mat-checkbox color="primary" formControlName="completed"
+            >Completed</mat-checkbox
+          >
         </p>
-        <p><mat-checkbox formControlName="dropped">Dropped</mat-checkbox></p>
-        <p><mat-checkbox formControlName="onHold">On-hold</mat-checkbox></p>
-        <p><mat-checkbox formControlName="reading">Reading</mat-checkbox></p>
         <p>
-          <mat-checkbox formControlName="planToRead">Plan-to-read</mat-checkbox>
+          <mat-checkbox color="primary" formControlName="dropped"
+            >Dropped</mat-checkbox
+          >
+        </p>
+        <p>
+          <mat-checkbox color="primary" formControlName="onHold"
+            >On-hold</mat-checkbox
+          >
+        </p>
+        <p>
+          <mat-checkbox color="primary" formControlName="reading"
+            >Reading</mat-checkbox
+          >
+        </p>
+        <p>
+          <mat-checkbox color="primary" formControlName="planToRead"
+            >Plan-to-read</mat-checkbox
+          >
         </p>
       </section>
     </mat-card>
@@ -42,37 +57,25 @@
             </div>
           </mat-card-content>
         </div>
-        >
       </mat-card>
+
       <mat-card class="no-books" *ngIf="bookList.length == 0"
-        >Let's add some books!</mat-card
+        >Nothing to display</mat-card
       >
     </div>
   </mat-grid-tile>
   <mat-grid-tile colspan="1" rowspan="3">
     <div class="add-a-book-container">
       <mat-card class="container">
-        <mat-card-title style="padding-bottom: 5%">Add a book</mat-card-title>
+        <mat-card-title class="add-a-book-header">Add a book</mat-card-title>
         <form>
           <mat-card-content>
             <mat-form-field class="full-width">
-              <input
-                matInput
-                type="text"
-                class=""
-                name="title"
-                placeholder="Enter title"
-              />
+              <input matInput name="title" placeholder="Enter title" />
             </mat-form-field>
 
             <mat-form-field class="full-width">
-              <input
-                matInput
-                type="text"
-                class=""
-                name="author"
-                placeholder="Enter author"
-              />
+              <input matInput name="author" placeholder="Enter author" />
             </mat-form-field>
             <mat-form-field>
               <mat-label>Status</mat-label>
@@ -103,13 +106,7 @@
             <mat-form-field
               *ngIf="addBookStatus == 'Reading' || addBookStatus == 'On-hold'"
             >
-              <input
-                matInput
-                type="text"
-                class=""
-                name="currentPage"
-                placeholder="Current Page"
-              />
+              <input matInput name="currentPage" placeholder="Current Page" />
             </mat-form-field>
             <mat-form-field
               appearance="fill"
