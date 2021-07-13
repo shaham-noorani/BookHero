@@ -1,7 +1,8 @@
 <mat-grid-list cols="4" rowHeight="25vh">
   <mat-grid-tile colspan="1" rowspan="3">
     <mat-card class="container">
-      <mat-card-title>Filters</mat-card-title>
+      <mat-card-title style="padding-bottom: 2vh">Filters</mat-card-title>
+      <mat-divider></mat-divider>
       <section [formGroup]="filters">
         <p>
           <mat-checkbox color="primary" formControlName="completed"
@@ -29,6 +30,7 @@
           >
         </p>
       </section>
+      <mat-divider></mat-divider>
     </mat-card>
   </mat-grid-tile>
   <mat-grid-tile
@@ -46,6 +48,21 @@
         <div class="book-list-entry-text">
           <mat-card [ngClass]="[entry.status, 'book-list-entry-status-text']">{{
             entry.status
+          }}</mat-card>
+          <mat-card
+            [ngClass]="['rating-' + entry.rating, 'book-list-entry-rating']"
+            *ngIf="entry.rating"
+          >
+            {{ entry.rating }} / 10
+          </mat-card>
+          <mat-card
+            [ngClass]="['rating-' + entry.rating, 'book-list-entry-no-rating']"
+            *ngIf="!entry.rating"
+          >
+            No rating
+          </mat-card>
+          <mat-card [ngClass]="['book-list-entry-category']">{{
+            entry.book.categories[0]
           }}</mat-card>
           <mat-card-title class="book-list-entry-title">{{
             entry.book.title

@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit {
   getUserDetails = () => {
     this.auth.profile().subscribe(
       (user) => {
-        console.log(user);
         this.user = user;
       },
       (err) => {

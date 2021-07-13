@@ -50,6 +50,7 @@ section {
   overflow: hidden;
   white-space: nowrap;
 }
+
 .book-list-entry-text {
   position: absolute;
   left: 30%;
@@ -66,6 +67,15 @@ section {
   align-self: right;
 }
 
+.book-list-entry-category {
+  position: absolute;
+  right: 0%;
+  top: 60%;
+  text-align: right;
+  align-self: right;
+  max-width: 15.5%;
+}
+
 .book-list-entry-status-bar {
   position: absolute;
   left: 95%;
@@ -73,6 +83,41 @@ section {
   width: 4%;
   height: 90%;
   border-radius: 30px;
+}
+
+.book-list-entry-rating {
+  position: absolute;
+  right: 0%;
+  top: 30%;
+  text-align: right;
+  align-self: right;
+  font-size: 20pt;
+}
+
+.book-list-entry-no-rating {
+  position: absolute;
+  right: 0%;
+  top: 30%;
+  text-align: right;
+  align-self: right;
+}
+
+.rating-1,
+.rating-2,
+.rating-3,
+.rating-4,
+.rating-5 {
+  color: mat-color($client-warn);
+}
+
+.rating-7,
+.rating-8 {
+  color: orange;
+}
+
+.rating-9,
+.rating-10 {
+  color: mat-color($client-primary);
 }
 
 .no-books {
@@ -105,4 +150,5 @@ section {
   display: -webkit-box;
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
+  width: 80%;
 }
