@@ -2,7 +2,7 @@
 @import '~@angular/material/theming';
 
 .container {
-  width: 80%;
+  width: 85%;
   height: 95%;
 }
 
@@ -10,7 +10,7 @@
 .add-a-book-container {
   width: 100%;
   position: absolute;
-  top: 2vh;
+  top: 1vh;
   height: 95%;
 }
 
@@ -46,10 +46,7 @@ section {
 
 .book-list-entry-title {
   font-size: 15pt;
-  max-width: 75%;
-  // text-overflow: ellipsis;
-  // overflow: hidden;
-  // white-space: nowrap;
+  max-width: 80%;
 }
 
 .book-list-entry-text {
@@ -57,13 +54,12 @@ section {
   left: 30%;
   top: 6%;
   width: 68%;
-  height: 100%;
 }
 
 .book-list-entry-status-text {
   position: absolute;
   right: 0%;
-  top: 0%;
+  top: -5%;
   text-align: right;
   align-self: right;
 }
@@ -71,7 +67,7 @@ section {
 .book-list-entry-category {
   position: absolute;
   right: 0%;
-  top: 60%;
+  top: 78%;
   text-align: right;
   align-self: right;
   max-width: 22%;
@@ -80,19 +76,10 @@ section {
   white-space: nowrap;
 }
 
-.book-list-entry-status-bar {
-  position: absolute;
-  left: 95%;
-  top: 6%;
-  width: 4%;
-  height: 90%;
-  border-radius: 30px;
-}
-
 .book-list-entry-rating {
   position: absolute;
   right: 0%;
-  top: 30%;
+  top: 36%;
   text-align: right;
   align-self: right;
   font-size: 15pt;
@@ -101,7 +88,7 @@ section {
 .book-list-entry-no-rating {
   position: absolute;
   right: 0%;
-  top: 30%;
+  top: 36%;
   text-align: right;
   align-self: right;
 }
@@ -153,7 +140,7 @@ section {
 .line-clamp {
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   width: 75%;
 }

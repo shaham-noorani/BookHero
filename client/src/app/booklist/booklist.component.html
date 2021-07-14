@@ -1,4 +1,4 @@
-<mat-grid-list cols="4" rowHeight="25vh">
+<mat-grid-list cols="5" rowHeight="25vh">
   <mat-grid-tile colspan="1" rowspan="2">
     <mat-card class="container">
       <mat-card-title>Filters</mat-card-title>
@@ -32,7 +32,7 @@
     </mat-card>
   </mat-grid-tile>
   <mat-grid-tile
-    colspan="2"
+    colspan="3"
     rowspan="{{ bookList.length < 6 ? 6 : bookList.length + 1 }}"
   >
     <div class="book-list-container">
@@ -44,6 +44,15 @@
           width="25%"
         />
         <div class="book-list-entry-text">
+          <mat-card-title class="book-list-entry-title">{{
+            entry.book.title
+          }}</mat-card-title>
+          <mat-card-content>
+            <h3>by {{ entry.book.author }}</h3>
+            <div class="line-clamp">
+              <p>{{ removeTags(entry.book.blurb) }}</p>
+            </div>
+          </mat-card-content>
           <mat-card [ngClass]="[entry.status, 'book-list-entry-status-text']">{{
             entry.status
           }}</mat-card>
@@ -64,15 +73,6 @@
               ? entry.book.categories[0]
               : 'No genre information'
           }}</mat-card>
-          <mat-card-title class="book-list-entry-title">{{
-            entry.book.title
-          }}</mat-card-title>
-          <mat-card-content>
-            <h3>by {{ entry.book.author }}</h3>
-            <div class="line-clamp">
-              <p>{{ removeTags(entry.book.blurb) }}</p>
-            </div>
-          </mat-card-content>
         </div>
       </mat-card>
 

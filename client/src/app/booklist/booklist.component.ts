@@ -26,7 +26,7 @@ export class BooklistComponent implements OnInit {
   addBookStatus: string;
   addBookRating: number;
   addBookCurrentPage: number;
-  addBookReview: Number;
+  addBookReview: number;
   addBookStartDate: Date;
   addBookEndDate: Date;
 

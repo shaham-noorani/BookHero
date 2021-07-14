@@ -9,7 +9,7 @@ export const enum status {
 export interface Book {
   title: string;
   author: string;
-  pageCount: Number;
+  pageCount: number;
   coverImage: string;
   blurb?: string;
   categories: string[];
@@ -21,9 +21,9 @@ export interface BookListEntry {
   book: Book;
   status: string;
   notes?: string;
-  currentPageCount: Number;
-  rating?: Number;
-  review?: Number;
+  currentPageCount: number;
+  rating?: number;
+  review?: number;
   startDate?: Date;
   endDate?: Date;
 }
