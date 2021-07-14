@@ -11,7 +11,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 import { AuthenticationService } from '../authentication.service';
 
-import { BookListEntry } from './book';
+import { Book, BookListEntry, status } from './book';
 import { BooksService } from '../books.service';
 import { Observable } from 'rxjs';
 
@@ -25,6 +25,10 @@ export class BooklistComponent implements OnInit {
 
   addBookStatus: string;
   addBookRating: number;
+  addBookCurrentPage: number;
+  addBookReview: Number;
+  addBookStartDate: Date;
+  addBookEndDate: Date;
 
   @Input() filters: FormGroup;
 
@@ -41,12 +45,11 @@ export class BooklistComponent implements OnInit {
     { value: 10, text: '1 - abysmal' },
   ];
 
-  // search bar
   searchControl = new FormControl();
-  filteredOptions: Observable<string[]>;
-  allBooks: any[];
+  newBookOptions: any[];
   autoCompleteList: any[];
   titleSelected: string[];
+  bookListEntryToAdd: BookListEntry;
 
   @ViewChild('autocompleteInput') autocompleteInput: ElementRef;
   @Output() onSelectedOption = new EventEmitter();
@@ -78,7 +81,7 @@ export class BooklistComponent implements OnInit {
     // search bar
     this.searchControl.valueChanges.subscribe((userInput) => {
       this.book.searchBookByTitle(userInput).subscribe((books) => {
-        this.allBooks = books;
+        this.newBookOptions = books;
         this.autoCompleteExpenseList(userInput);
       });
     });
@@ -144,11 +147,11 @@ export class BooklistComponent implements OnInit {
     if (val === '' || val === null) {
       return [];
     }
-    return this.allBooks;
+    return this.newBookOptions;
   }
 
-  filterBookList(event) {
-    var books = event.source.value;
+  setBook(event) {
+    var books = event?.source?.value;
     if (!books) {
       this.titleSelected = [];
     } else {
@@ -156,11 +159,47 @@ export class BooklistComponent implements OnInit {
       this.onSelectedOption.emit(books);
     }
 
+    this.newBookOptions.forEach((newBook) => {
+      if (newBook.volumeInfo.title == this.titleSelected[0])
+        this.bookListEntryToAdd = {
+          volumeId: newBook.id,
+          status: this.addBookStatus,
+          currentPageCount:
+            this.addBookStatus == 'Completed'
+              ? newBook.volumeInfo.pageCount
+              : this.addBookCurrentPage,
+          rating: this.addBookRating,
+          review: this.addBookReview,
+          startDate: this.addBookStartDate,
+          endDate: this.addBookEndDate,
+          book: {
+            title: newBook.volumeInfo.title,
+            author: newBook.volumeInfo.authors[0],
+            pageCount: newBook.volumeInfo.pageCount,
+            coverImage: newBook.volumeInfo.imageLinks.thumbnail,
+            blurb: newBook.volumeInfo.description,
+            categories: newBook.volumeInfo.categories
+              ? newBook.volumeInfo.categories[0].split(' / ')
+              : [],
+            datePublished: newBook.volumeInfo.publishedDate,
+          },
+        };
+    });
+
+    console.log(this.bookListEntryToAdd);
+
     this.focusOnPlaceInput();
   }
 
   focusOnPlaceInput() {
     this.autocompleteInput.nativeElement.focus();
     this.autocompleteInput.nativeElement.value = '';
+  }
+
+  addBookToUserList() {
+    this.setBook({ source: { value: this.titleSelected[0] } });
+    this.book.addToUserBooklist(this.bookListEntryToAdd).subscribe((res) => {
+      this.getBooklist();
+    });
   }
 }

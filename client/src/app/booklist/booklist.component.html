@@ -108,7 +108,7 @@
                 <mat-option
                   *ngFor="let option of autoCompleteList"
                   [value]="option.volumeInfo.title"
-                  (onSelectionChange)="filterBookList($event)"
+                  (onSelectionChange)="setBook($event)"
                 >
                   {{ option.volumeInfo.title }} by
                   {{ option.volumeInfo.authors }}
@@ -117,7 +117,7 @@
             </mat-chip-list>
           </mat-form-field>
         </form>
-        <form>
+        <form (ngSubmit)="addBookToUserList()">
           <mat-card-content>
             <mat-form-field>
               <mat-label>Status</mat-label>
@@ -143,12 +143,21 @@
             </mat-form-field>
             <mat-form-field *ngIf="addBookStatus == 'Completed'">
               <mat-label>Review</mat-label>
-              <textarea matInput></textarea>
+              <textarea
+                matInput
+                [(ngModel)]="addBookReview"
+                name="addBookReview"
+              ></textarea>
             </mat-form-field>
             <mat-form-field
               *ngIf="addBookStatus == 'Reading' || addBookStatus == 'On-hold'"
             >
-              <input matInput name="currentPage" placeholder="Current Page" />
+              <input
+                matInput
+                name="currentPage"
+                placeholder="Current Page"
+                [(ngModel)]="addBookCurrentPage"
+              />
             </mat-form-field>
             <mat-form-field
               appearance="fill"

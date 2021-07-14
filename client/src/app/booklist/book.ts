@@ -1,4 +1,4 @@
-const enum status {
+export const enum status {
   completed = 'Completed',
   dropped = 'Dropped',
   on_hold = 'On-hold',
@@ -7,20 +7,20 @@ const enum status {
 }
 
 export interface Book {
-  title: String;
-  author: String;
+  title: string;
+  author: string;
   pageCount: Number;
-  coverImage: String;
-  blurb?: String;
-  categories: String[];
+  coverImage: string;
+  blurb?: string;
+  categories: string[];
   datePublished: Date;
 }
 
 export interface BookListEntry {
-  volumeId: String;
+  volumeId: string;
   book: Book;
-  status: status;
-  notes?: String;
+  status: string;
+  notes?: string;
   currentPageCount: Number;
   rating?: Number;
   review?: Number;
