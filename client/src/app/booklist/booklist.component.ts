@@ -1,10 +1,19 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 import { AuthenticationService } from '../authentication.service';
 
 import { BookListEntry } from './book';
 import { BooksService } from '../books.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-booklist',
@@ -17,7 +26,6 @@ export class BooklistComponent implements OnInit {
   addBookStatus: string;
   addBookRating: number;
 
-  // @Input() searchForm: FormGroup;
   @Input() filters: FormGroup;
 
   ratings = [
@@ -33,10 +41,20 @@ export class BooklistComponent implements OnInit {
     { value: 10, text: '1 - abysmal' },
   ];
 
+  // search bar
+  searchControl = new FormControl();
+  filteredOptions: Observable<string[]>;
+  allBooks: any[];
+  autoCompleteList: any[];
+  titleSelected: string[];
+
+  @ViewChild('autocompleteInput') autocompleteInput: ElementRef;
+  @Output() onSelectedOption = new EventEmitter();
+
   constructor(
     private fb: FormBuilder,
     private auth: AuthenticationService,
-    private book: BooksService
+    public book: BooksService
   ) {
     this.filters = fb.group({
       completed: true,
@@ -53,9 +71,18 @@ export class BooklistComponent implements OnInit {
     this.statusOrder.set('Dropped', 2);
     this.statusOrder.set('On-hold', 3);
     this.statusOrder.set('Reading', 4);
-    this.statusOrder.set('Plan-to-read', 5);
+    this.statusOrder.set('Plan to read', 5);
 
     this.getBooklist();
+
+    // search bar
+    this.searchControl.valueChanges.subscribe((userInput) => {
+      this.book.searchBookByTitle(userInput).subscribe((books) => {
+        this.allBooks = books;
+        this.autoCompleteExpenseList(userInput);
+      });
+    });
+
     this.onChanges();
   }
 
@@ -100,7 +127,40 @@ export class BooklistComponent implements OnInit {
     if (status == 'Dropped') return this.filters.value.dropped;
     if (status == 'On-hold') return this.filters.value.onHold;
     if (status == 'Reading') return this.filters.value.reading;
-    if (status == 'Plan-to-read') return this.filters.value.planToRead;
+    if (status == 'Plan to read') return this.filters.value.planToRead;
     return false;
   };
+
+  // search
+  private autoCompleteExpenseList(input) {
+    let categoryList = this.filterCategoryList(input);
+    this.autoCompleteList = categoryList;
+  }
+
+  filterCategoryList(val) {
+    if (typeof val != 'string') {
+      return [];
+    }
+    if (val === '' || val === null) {
+      return [];
+    }
+    return this.allBooks;
+  }
+
+  filterBookList(event) {
+    var books = event.source.value;
+    if (!books) {
+      this.titleSelected = [];
+    } else {
+      this.titleSelected = [books];
+      this.onSelectedOption.emit(books);
+    }
+
+    this.focusOnPlaceInput();
+  }
+
+  focusOnPlaceInput() {
+    this.autocompleteInput.nativeElement.focus();
+    this.autocompleteInput.nativeElement.value = '';
+  }
 }

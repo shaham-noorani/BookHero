@@ -46,9 +46,10 @@ section {
 
 .book-list-entry-title {
   font-size: 15pt;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+  max-width: 75%;
+  // text-overflow: ellipsis;
+  // overflow: hidden;
+  // white-space: nowrap;
 }
 
 .book-list-entry-text {
@@ -73,7 +74,10 @@ section {
   top: 60%;
   text-align: right;
   align-self: right;
-  max-width: 15.5%;
+  max-width: 22%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .book-list-entry-status-bar {
@@ -91,7 +95,7 @@ section {
   top: 30%;
   text-align: right;
   align-self: right;
-  font-size: 20pt;
+  font-size: 15pt;
 }
 
 .book-list-entry-no-rating {
@@ -141,14 +145,15 @@ section {
   background-color: mat-color($client-warn);
 }
 
-.Plan-to-read {
+// plan to read
+.Plan {
   background-color: lightslategray;
 }
 
 .line-clamp {
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 6;
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
-  width: 80%;
+  width: 75%;
 }

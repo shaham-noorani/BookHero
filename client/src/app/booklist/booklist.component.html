@@ -25,7 +25,7 @@
         </p>
         <p>
           <mat-checkbox color="primary" formControlName="planToRead"
-            >Plan-to-read</mat-checkbox
+            >Plan to read</mat-checkbox
           >
         </p>
       </section>
@@ -85,15 +85,40 @@
     <div class="add-a-book-container">
       <mat-card class="container">
         <mat-card-title class="add-a-book-header">Add a book</mat-card-title>
+        <form class="search-form">
+          <mat-form-field class="full-width" style="width: 100%">
+            <mat-chip-list #chipList>
+              <mat-chip
+                style="margin-top: 0.4em"
+                *ngFor="let option of titleSelected"
+              >
+                <span>{{ option }}</span>
+              </mat-chip>
+              <input
+                #autocompleteInput
+                type="text"
+                placeholder="Enter title"
+                aria-label="Number"
+                matInput
+                [formControl]="searchControl"
+                [matAutocomplete]="auto"
+                [matChipInputFor]="chipList"
+              />
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option
+                  *ngFor="let option of autoCompleteList"
+                  [value]="option.volumeInfo.title"
+                  (onSelectionChange)="filterBookList($event)"
+                >
+                  {{ option.volumeInfo.title }} by
+                  {{ option.volumeInfo.authors }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-chip-list>
+          </mat-form-field>
+        </form>
         <form>
           <mat-card-content>
-            <mat-form-field class="full-width">
-              <input matInput name="title" placeholder="Enter title" />
-            </mat-form-field>
-
-            <mat-form-field class="full-width">
-              <input matInput name="author" placeholder="Enter author" />
-            </mat-form-field>
             <mat-form-field>
               <mat-label>Status</mat-label>
               <mat-select [(ngModel)]="addBookStatus" name="addBookStatus">
@@ -101,7 +126,7 @@
                 <mat-option value="Dropped">Dropped</mat-option>
                 <mat-option value="On-hold">On-hold</mat-option>
                 <mat-option value="Reading">Reading</mat-option>
-                <mat-option value="Plan-to-read">Plan-to-read</mat-option>
+                <mat-option value="Plan to read">Plan to read</mat-option>
               </mat-select>
             </mat-form-field>
             <mat-form-field
@@ -128,7 +153,7 @@
             <mat-form-field
               appearance="fill"
               *ngIf="
-                !(addBookStatus == 'Plan-to-read' || addBookStatus == null)
+                !(addBookStatus == 'Plan to read' || addBookStatus == null)
               "
             >
               <mat-label>Start date</mat-label>
@@ -143,7 +168,7 @@
               appearance="fill"
               *ngIf="
                 !(
-                  addBookStatus == 'Plan-to-read' ||
+                  addBookStatus == 'Plan to read' ||
                   addBookStatus == 'Reading' ||
                   addBookStatus == null
                 )
