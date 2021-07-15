@@ -18,7 +18,7 @@ export interface Book {
 
 export interface BookListEntry {
   volumeId: string;
-  book: Book;
+  book?: Book;
   status: string;
   notes?: string;
   currentPageCount: number;

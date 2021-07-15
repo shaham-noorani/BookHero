@@ -1,6 +1,8 @@
 @import '../../styles.scss';
 @import '~@angular/material/theming';
 
+$completed: lightgreen;
+
 .container {
   width: 85%;
   height: 95%;
@@ -41,7 +43,8 @@ section {
   position: absolute;
   top: 4%;
   height: 92%;
-  border-radius: 30px;
+  border-radius: 15px;
+  width: 15%;
 }
 
 .book-list-entry-title {
@@ -51,26 +54,42 @@ section {
 
 .book-list-entry-text {
   position: absolute;
-  left: 30%;
+  left: 18%;
   top: 6%;
-  width: 68%;
+  width: 80%;
 }
 
-.book-list-entry-status-text {
+.book-list-entry-info {
   position: absolute;
+  left: 70%;
+  top: 0%;
+  width: 27%;
+  height: 100%;
+}
+
+// .book-list-entry-status-text {
+//   position: absolute;
+//   right: 0%;
+//   top: -5%;
+//   text-align: right;
+//   align-self: right;
+// }
+
+.book-list-entry-status-bar {
+  position: absolute;
+  top: 0;
   right: 0%;
-  top: -5%;
-  text-align: right;
-  align-self: right;
+  width: 5%;
+  height: 100%;
+  background-color: aqua;
 }
 
 .book-list-entry-category {
   position: absolute;
   right: 0%;
-  top: 78%;
+  top: 30%;
   text-align: right;
-  align-self: right;
-  max-width: 22%;
+  max-width: 50%;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -79,9 +98,8 @@ section {
 .book-list-entry-rating {
   position: absolute;
   right: 0%;
-  top: 36%;
+  top: 5%;
   text-align: right;
-  align-self: right;
   font-size: 15pt;
 }
 
@@ -142,5 +160,15 @@ section {
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
-  width: 75%;
+  width: 80%;
+}
+
+::ng-deep mat-option.mat-option {
+  height: unset;
+  line-height: 31px;
+}
+
+::ng-deep .mat-option-text.mat-option-text {
+  white-space: normal;
+  padding: 10px 0 10px;
 }

@@ -26,7 +26,6 @@ export class BooksService {
       '/api/users/add-to-booklist',
       {
         status: booklistEntry.status,
-        book: booklistEntry.book,
         notes: booklistEntry.notes,
         currentPageCount: booklistEntry.currentPageCount,
         rating: booklistEntry.rating,

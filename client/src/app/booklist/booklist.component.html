@@ -4,17 +4,21 @@
       <mat-card-title>Filters</mat-card-title>
       <section [formGroup]="filters">
         <p>
-          <mat-checkbox color="primary" formControlName="completed"
+          <mat-checkbox
+            class="filters-checkbox-completed"
+            formControlName="completed"
             >Completed</mat-checkbox
           >
         </p>
         <p>
-          <mat-checkbox color="primary" formControlName="dropped"
+          <mat-checkbox color="warn" formControlName="dropped"
             >Dropped</mat-checkbox
           >
         </p>
         <p>
-          <mat-checkbox color="primary" formControlName="onHold"
+          <mat-checkbox
+            class="filters-checkbox-on-hold"
+            formControlName="onHold"
             >On-hold</mat-checkbox
           >
         </p>
@@ -24,7 +28,9 @@
           >
         </p>
         <p>
-          <mat-checkbox color="primary" formControlName="planToRead"
+          <mat-checkbox
+            class="filters-checkbox-plan-to-read"
+            formControlName="planToRead"
             >Plan to read</mat-checkbox
           >
         </p>
@@ -41,8 +47,8 @@
           src="{{ entry.book.coverImage }}"
           alt=""
           class="book-list-entry-image"
-          width="25%"
         />
+
         <div class="book-list-entry-text">
           <mat-card-title class="book-list-entry-title">{{
             entry.book.title
@@ -50,12 +56,12 @@
           <mat-card-content>
             <h3>by {{ entry.book.author }}</h3>
             <div class="line-clamp">
-              <p>{{ removeTags(entry.book.blurb) }}</p>
+              <p>{{ removeHTMLTags(entry.book.blurb) }}</p>
             </div>
           </mat-card-content>
-          <mat-card [ngClass]="[entry.status, 'book-list-entry-status-text']">{{
-            entry.status
-          }}</mat-card>
+        </div>
+        <div [ngClass]="[entry.status, 'book-list-entry-status-bar']"></div>
+        <div class="book-list-entry-info">
           <mat-card
             [ngClass]="['rating-' + entry.rating, 'book-list-entry-rating']"
             *ngIf="entry.rating"
@@ -63,10 +69,10 @@
             {{ entry.rating }} / 10
           </mat-card>
           <mat-card
-            [ngClass]="['rating-' + entry.rating, 'book-list-entry-no-rating']"
+            [ngClass]="['rating-' + entry.rating, 'book-list-entry-rating']"
             *ngIf="!entry.rating"
           >
-            No rating yet
+            - / 10
           </mat-card>
           <mat-card [ngClass]="['book-list-entry-category']">{{
             entry.book.categories[0]
@@ -75,7 +81,6 @@
           }}</mat-card>
         </div>
       </mat-card>
-
       <mat-card class="no-books" *ngIf="bookList.length == 0"
         >Nothing to display</mat-card
       >
@@ -85,28 +90,34 @@
     <div class="add-a-book-container">
       <mat-card class="container">
         <mat-card-title class="add-a-book-header">Add a book</mat-card-title>
-        <form class="search-form">
+        <form
+          [formGroup]="addBookFormGroup"
+          class="search-form"
+          (ngSubmit)="addBookToUserList()"
+        >
           <mat-form-field class="full-width" style="width: 100%">
             <mat-chip-list #chipList>
               <mat-chip
                 style="margin-top: 0.4em"
-                *ngFor="let option of titleSelected"
+                *ngFor="let title of titleSelected"
+                [removable]="true"
+                (removed)="titleSelected = []"
               >
-                <span>{{ option }}</span>
+                <span>{{ title }}</span>
+                <mat-icon matChipRemove>cancel</mat-icon>
               </mat-chip>
               <input
                 #autocompleteInput
                 type="text"
                 placeholder="Enter title"
-                aria-label="Number"
                 matInput
-                [formControl]="searchControl"
+                formControlName="title"
                 [matAutocomplete]="auto"
                 [matChipInputFor]="chipList"
               />
               <mat-autocomplete #auto="matAutocomplete">
                 <mat-option
-                  *ngFor="let option of autoCompleteList"
+                  *ngFor="let option of newBookOptions"
                   [value]="option.volumeInfo.title"
                   (onSelectionChange)="setBook($event)"
                 >
@@ -116,12 +127,10 @@
               </mat-autocomplete>
             </mat-chip-list>
           </mat-form-field>
-        </form>
-        <form (ngSubmit)="addBookToUserList()">
           <mat-card-content>
-            <mat-form-field>
+            <mat-form-field class="full-width">
               <mat-label>Status</mat-label>
-              <mat-select [(ngModel)]="addBookStatus" name="addBookStatus">
+              <mat-select name="addBookStatus" formControlName="status">
                 <mat-option value="Completed">Completed</mat-option>
                 <mat-option value="Dropped">Dropped</mat-option>
                 <mat-option value="On-hold">On-hold</mat-option>
@@ -130,10 +139,14 @@
               </mat-select>
             </mat-form-field>
             <mat-form-field
-              *ngIf="addBookStatus == 'Completed' || addBookStatus == 'Dropped'"
+              class="full-width"
+              *ngIf="
+                addBookFormGroup.get('status').value == 'Completed' ||
+                addBookFormGroup.get('status').value == 'Dropped'
+              "
             >
               <mat-label>Rating</mat-label>
-              <mat-select [(ngModel)]="addBookRating" name="addBookRating">
+              <mat-select name="addBookRating" formControlName="rating">
                 <mat-option
                   *ngFor="let option of ratings"
                   [value]="option.value"
@@ -141,32 +154,47 @@
                 >
               </mat-select>
             </mat-form-field>
-            <mat-form-field *ngIf="addBookStatus == 'Completed'">
+            <mat-form-field
+              class="full-width"
+              *ngIf="addBookFormGroup.get('status').value == 'Completed'"
+            >
               <mat-label>Review</mat-label>
               <textarea
                 matInput
-                [(ngModel)]="addBookReview"
+                formControlName="review"
                 name="addBookReview"
               ></textarea>
             </mat-form-field>
             <mat-form-field
-              *ngIf="addBookStatus == 'Reading' || addBookStatus == 'On-hold'"
+              class="full-width"
+              *ngIf="
+                addBookFormGroup.get('status').value == 'Reading' ||
+                addBookFormGroup.get('status').value == 'On-hold'
+              "
             >
               <input
                 matInput
                 name="currentPage"
                 placeholder="Current Page"
-                [(ngModel)]="addBookCurrentPage"
+                formControlName="currentPage"
               />
             </mat-form-field>
             <mat-form-field
+              class="full-width"
               appearance="fill"
               *ngIf="
-                !(addBookStatus == 'Plan to read' || addBookStatus == null)
+                !(
+                  addBookFormGroup.get('status').value == 'Plan to read' ||
+                  addBookFormGroup.get('status').value == null
+                )
               "
             >
               <mat-label>Start date</mat-label>
-              <input matInput [matDatepicker]="picker" />
+              <input
+                matInput
+                [matDatepicker]="picker"
+                formControlName="startDate"
+              />
               <mat-datepicker-toggle
                 matSuffix
                 [for]="picker"
@@ -174,17 +202,22 @@
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
             <mat-form-field
+              class="full-width"
               appearance="fill"
               *ngIf="
                 !(
-                  addBookStatus == 'Plan to read' ||
-                  addBookStatus == 'Reading' ||
-                  addBookStatus == null
+                  addBookFormGroup.get('status').value == 'Plan to read' ||
+                  addBookFormGroup.get('status').value == 'Reading' ||
+                  addBookFormGroup.get('status').value == null
                 )
               "
             >
               <mat-label>End date</mat-label>
-              <input matInput [matDatepicker]="picker" />
+              <input
+                matInput
+                [matDatepicker]="picker"
+                formControlName="endDate"
+              />
               <mat-datepicker-toggle
                 matSuffix
                 [for]="picker"

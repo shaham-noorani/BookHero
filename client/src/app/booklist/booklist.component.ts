@@ -1,19 +1,10 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { AuthenticationService } from '../authentication.service';
-
-import { Book, BookListEntry, status } from './book';
+import { BookListEntry } from './book';
 import { BooksService } from '../books.service';
-import { Observable } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-booklist',
@@ -23,36 +14,25 @@ import { Observable } from 'rxjs';
 export class BooklistComponent implements OnInit {
   bookList: BookListEntry[];
 
-  addBookStatus: string;
-  addBookRating: number;
-  addBookCurrentPage: number;
-  addBookReview: number;
-  addBookStartDate: Date;
-  addBookEndDate: Date;
-
   @Input() filters: FormGroup;
+  @Input() addBookFormGroup: FormGroup;
 
   ratings = [
     { value: 10, text: '10 - masterpiece' },
-    { value: 10, text: '9 - really good' },
-    { value: 10, text: '8 - great' },
-    { value: 10, text: '7 - good' },
-    { value: 10, text: '6 - okay' },
-    { value: 10, text: '5 - not great' },
-    { value: 10, text: '4 - bad' },
-    { value: 10, text: '3 - really bad' },
-    { value: 10, text: '2 - horrible' },
-    { value: 10, text: '1 - abysmal' },
+    { value: 9, text: '9 - really good' },
+    { value: 8, text: '8 - great' },
+    { value: 7, text: '7 - good' },
+    { value: 6, text: '6 - okay' },
+    { value: 5, text: '5 - not great' },
+    { value: 4, text: '4 - bad' },
+    { value: 3, text: '3 - really bad' },
+    { value: 2, text: '2 - horrible' },
+    { value: 1, text: '1 - abysmal' },
   ];
 
-  searchControl = new FormControl();
   newBookOptions: any[];
-  autoCompleteList: any[];
   titleSelected: string[];
   bookListEntryToAdd: BookListEntry;
-
-  @ViewChild('autocompleteInput') autocompleteInput: ElementRef;
-  @Output() onSelectedOption = new EventEmitter();
 
   constructor(
     private fb: FormBuilder,
@@ -66,6 +46,16 @@ export class BooklistComponent implements OnInit {
       reading: true,
       planToRead: false,
     });
+
+    this.addBookFormGroup = fb.group({
+      title: '',
+      status: 'Reading',
+      rating: '',
+      currentPage: 1,
+      review: '',
+      startDate: Date.now(),
+      endDate: Date.now(),
+    });
   }
 
   statusOrder: Map<string, number> = new Map();
@@ -77,14 +67,6 @@ export class BooklistComponent implements OnInit {
     this.statusOrder.set('Plan to read', 5);
 
     this.getBooklist();
-
-    // search bar
-    this.searchControl.valueChanges.subscribe((userInput) => {
-      this.book.searchBookByTitle(userInput).subscribe((books) => {
-        this.newBookOptions = books;
-        this.autoCompleteExpenseList(userInput);
-      });
-    });
 
     this.onChanges();
   }
@@ -106,22 +88,21 @@ export class BooklistComponent implements OnInit {
   };
 
   onChanges() {
+    this.addBookFormGroup
+      .get('title')
+      .valueChanges.pipe(debounceTime(250))
+      .subscribe((userInput) => {
+        this.book.searchBookByTitle(userInput).subscribe((books) => {
+          this.newBookOptions = books;
+        });
+      });
+
     this.filters.valueChanges.subscribe(() => {
       this.getBooklist();
     });
   }
 
-  searchValue = (value) => {
-    return this.book.searchBookByTitle(value);
-  };
-
-  removeTags = (str) => {
-    if (str === null || str === '') return false;
-    else str = str.toString();
-
-    // Regular expression to identify HTML tags in
-    // the input string. Replacing the identified
-    // HTML tag with a null string.
+  removeHTMLTags = (str: string): string => {
     return str.replace(/(<([^>]+)>)/gi, '');
   };
 
@@ -134,66 +115,31 @@ export class BooklistComponent implements OnInit {
     return false;
   };
 
-  // search
-  private autoCompleteExpenseList(input) {
-    let categoryList = this.filterCategoryList(input);
-    this.autoCompleteList = categoryList;
-  }
-
-  filterCategoryList(val) {
-    if (typeof val != 'string') {
-      return [];
-    }
-    if (val === '' || val === null) {
-      return [];
-    }
-    return this.newBookOptions;
-  }
-
   setBook(event) {
-    var books = event?.source?.value;
-    if (!books) {
+    var title = event?.source?.value;
+    if (!title) {
       this.titleSelected = [];
     } else {
-      this.titleSelected = [books];
-      this.onSelectedOption.emit(books);
+      this.titleSelected = [title];
     }
 
     this.newBookOptions.forEach((newBook) => {
       if (newBook.volumeInfo.title == this.titleSelected[0])
         this.bookListEntryToAdd = {
           volumeId: newBook.id,
-          status: this.addBookStatus,
+          status: this.addBookFormGroup.get('status').value,
           currentPageCount:
-            this.addBookStatus == 'Completed'
+            this.addBookFormGroup.get('status').value == 'Completed'
               ? newBook.volumeInfo.pageCount
-              : this.addBookCurrentPage,
-          rating: this.addBookRating,
-          review: this.addBookReview,
-          startDate: this.addBookStartDate,
-          endDate: this.addBookEndDate,
-          book: {
-            title: newBook.volumeInfo.title,
-            author: newBook.volumeInfo.authors[0],
-            pageCount: newBook.volumeInfo.pageCount,
-            coverImage: newBook.volumeInfo.imageLinks.thumbnail,
-            blurb: newBook.volumeInfo.description,
-            categories: newBook.volumeInfo.categories
-              ? newBook.volumeInfo.categories[0].split(' / ')
-              : [],
-            datePublished: newBook.volumeInfo.publishedDate,
-          },
+              : this.addBookFormGroup.get('currentPage').value,
+          rating: this.addBookFormGroup.get('rating').value,
+          review: this.addBookFormGroup.get('review').value,
+          startDate: this.addBookFormGroup.get('startDate').value,
+          endDate: this.addBookFormGroup.get('endDate').value,
         };
     });
 
-    console.log(this.bookListEntryToAdd);
-
-    this.focusOnPlaceInput();
-  }
-
-  focusOnPlaceInput() {
-    this.autocompleteInput.nativeElement.focus();
-    this.autocompleteInput.nativeElement.value = '';
+    this.addBookFormGroup.get('title').setValue('');
   }
 
   addBookToUserList() {
@@ -201,5 +147,7 @@ export class BooklistComponent implements OnInit {
     this.book.addToUserBooklist(this.bookListEntryToAdd).subscribe((res) => {
       this.getBooklist();
     });
+
+    this.addBookFormGroup.reset();
   }
 }
