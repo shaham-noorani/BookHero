@@ -139,7 +139,7 @@ export class BooklistComponent implements OnInit {
         };
     });
 
-    this.addBookFormGroup.get('title').setValue('');
+    this.addBookFormGroup.get('title').reset();
   }
 
   addBookToUserList() {
@@ -148,6 +148,7 @@ export class BooklistComponent implements OnInit {
       this.getBooklist();
     });
 
+    this.titleSelected = [];
     this.addBookFormGroup.reset();
   }
 }
