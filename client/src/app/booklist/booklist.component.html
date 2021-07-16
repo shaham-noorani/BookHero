@@ -91,12 +91,8 @@
     <div class="add-a-book-container">
       <mat-card class="container">
         <mat-card-title class="add-a-book-header">Add a book</mat-card-title>
-        <form
-          [formGroup]="addBookFormGroup"
-          class="search-form"
-          (ngSubmit)="addBookToUserList()"
-        >
-          <mat-form-field class="full-width" style="width: 100%">
+        <form [formGroup]="addBookFormGroup" (ngSubmit)="addBookToUserList()">
+          <mat-form-field>
             <mat-chip-list #chipList>
               <mat-chip
                 *ngFor="let title of titleSelected"
@@ -128,7 +124,7 @@
             </mat-chip-list>
           </mat-form-field>
           <mat-card-content>
-            <mat-form-field class="full-width">
+            <mat-form-field>
               <mat-label>Status</mat-label>
               <mat-select name="addBookStatus" formControlName="status">
                 <mat-option value="Completed">Completed</mat-option>
@@ -139,7 +135,6 @@
               </mat-select>
             </mat-form-field>
             <mat-form-field
-              class="full-width"
               *ngIf="
                 addBookFormGroup.get('status').value == 'Completed' ||
                 addBookFormGroup.get('status').value == 'Dropped'
@@ -155,7 +150,6 @@
               </mat-select>
             </mat-form-field>
             <mat-form-field
-              class="full-width"
               *ngIf="addBookFormGroup.get('status').value == 'Completed'"
             >
               <mat-label>Review</mat-label>
@@ -166,7 +160,6 @@
               ></textarea>
             </mat-form-field>
             <mat-form-field
-              class="full-width"
               *ngIf="
                 addBookFormGroup.get('status').value == 'Reading' ||
                 addBookFormGroup.get('status').value == 'On-hold'
@@ -180,7 +173,7 @@
               />
             </mat-form-field>
             <mat-form-field
-              class="full-width"
+              style="width: 85%"
               appearance="fill"
               *ngIf="
                 !(
@@ -202,7 +195,7 @@
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
             <mat-form-field
-              class="full-width"
+              style="width: 85%"
               appearance="fill"
               *ngIf="
                 !(

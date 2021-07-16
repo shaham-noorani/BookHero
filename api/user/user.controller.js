@@ -71,6 +71,17 @@ module.exports.removeFromBooklist = async (req, res) => {
   });
 };
 
+module.exports.updateBooklistEntry = async (req, res) => {
+  User.updateOne(
+    { _id: req.payload._id, 'bookList.volumeId': req.query.volumeId },
+    {
+      $set: { 'bookList.$': req.body },
+    }
+  ).exec((err, user) => {
+    res.status(200).json(user);
+  });
+};
+
 module.exports.getUser = (req, res, next) => {
   User.findById(req.params.id).exec((err, user) => {
     if (err) {

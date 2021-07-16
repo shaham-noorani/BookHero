@@ -21,7 +21,6 @@ export class BooksService {
   }
 
   public addToUserBooklist(booklistEntry: BookListEntry) {
-    console.log(this.auth.getToken());
     return this.http.post<any>(
       '/api/users/add-to-booklist',
       {
@@ -46,6 +45,15 @@ export class BooksService {
     return this.http.delete('api/users/remove-from-booklist', {
       params: {
         volumeId: volumeId,
+      },
+      headers: { Authorization: `Bearer ${this.auth.getToken()}` },
+    });
+  }
+
+  public updateBooklistEntry(booklistEntry: BookListEntry) {
+    return this.http.put('/api/users/update-booklist-entry', booklistEntry, {
+      params: {
+        volumeId: booklistEntry.volumeId,
       },
       headers: { Authorization: `Bearer ${this.auth.getToken()}` },
     });
