@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { AuthenticationService } from '../authentication.service';
 import { BookListEntry } from './book';
 import { BooksService } from '../books.service';
 import { debounceTime } from 'rxjs/operators';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-booklist',
@@ -37,7 +38,8 @@ export class BooklistComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private auth: AuthenticationService,
-    public book: BooksService
+    public book: BooksService,
+    public dialog: MatDialog
   ) {
     this.filters = fb.group({
       completed: true,
@@ -156,5 +158,35 @@ export class BooklistComponent implements OnInit {
     this.book.removeFromUserBooklist(volumeId).subscribe((res) => {
       this.getBooklist();
     });
+  }
+
+  deleteEntryVerification(volumeId): void {
+    const dialogRef = this.dialog.open(deleteEntryVerificationDialog, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe((shouldDelete) => {
+      if (shouldDelete) this.removeBookFromUserList(volumeId);
+    });
+  }
+}
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: './booklist-entry-delete-dialog.html',
+})
+export class deleteEntryVerificationDialog {
+  constructor(public dialogRef: MatDialogRef<deleteEntryVerificationDialog>) {}
+
+  deleteEntry(): void {
+    this.dialogRef.close(true);
+  }
+
+  cancel(): void {
+    this.dialogRef.close(false);
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close(false);
   }
 }
