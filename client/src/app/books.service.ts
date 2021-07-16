@@ -41,4 +41,13 @@ export class BooksService {
       }
     );
   }
+
+  public removeFromUserBooklist(volumeId: string) {
+    return this.http.delete('api/users/remove-from-booklist', {
+      params: {
+        volumeId: volumeId,
+      },
+      headers: { Authorization: `Bearer ${this.auth.getToken()}` },
+    });
+  }
 }

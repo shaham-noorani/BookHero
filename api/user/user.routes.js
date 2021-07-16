@@ -12,6 +12,7 @@ const auth = jwt({
 // current user actions
 router.get('/me', auth, controller.getMe);
 router.post('/add-to-booklist', auth, controller.addToBooklist);
+router.delete('/remove-from-booklist', auth, controller.removeFromBooklist);
 
 // non auth user actions
 router.get('/:id', controller.getUser);

@@ -80,6 +80,13 @@
               : 'No genre information'
           }}</mat-card>
         </div>
+        <button
+          class="book-list-entry-delete-button"
+          mat-icon-button
+          (click)="removeBookFromUserList(entry.volumeId)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
       </mat-card>
       <mat-card class="no-books" *ngIf="bookList.length == 0"
         >Nothing to display</mat-card

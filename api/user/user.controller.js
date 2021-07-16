@@ -60,6 +60,17 @@ module.exports.addToBooklist = async (req, res) => {
   });
 };
 
+module.exports.removeFromBooklist = async (req, res) => {
+  User.updateOne(
+    { _id: req.payload._id },
+    {
+      $pull: { bookList: { volumeId: req.query.volumeId } },
+    }
+  ).exec((err, user) => {
+    res.status(200).json(user);
+  });
+};
+
 module.exports.getUser = (req, res, next) => {
   User.findById(req.params.id).exec((err, user) => {
     if (err) {

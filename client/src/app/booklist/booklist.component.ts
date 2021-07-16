@@ -151,4 +151,10 @@ export class BooklistComponent implements OnInit {
     this.titleSelected = [];
     this.addBookFormGroup.reset();
   }
+
+  removeBookFromUserList(volumeId) {
+    this.book.removeFromUserBooklist(volumeId).subscribe((res) => {
+      this.getBooklist();
+    });
+  }
 }
