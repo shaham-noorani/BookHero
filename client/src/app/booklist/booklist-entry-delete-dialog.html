@@ -1,18 +1,23 @@
-<h1 mat-dialog-title>Are you sure you want to delete this entry?</h1>
-<button
-  mat-button
-  class="mat-button"
-  style="background-color: lightgray; margin-right: 1vw"
-  (click)="cancel()"
->
-  Cancel
-</button>
-<button
-  mat-button
-  class="mat-button"
-  style="background-color: lightcoral"
-  (click)="deleteEntry()"
-  cdkFocusInitial
->
-  Yes
-</button>
+<h1 mat-dialog-title style="text-align: center">
+  Are you sure you want to delete this entry?
+</h1>
+<div style="position: absolute; bottom: 42vh">
+  <button
+    mat-button
+    class="mat-button"
+    style="background-color: lightgray; margin-right: 1vw; margin-left: 2.8vw"
+    (click)="cancel()"
+  >
+    Cancel
+  </button>
+  <button
+    mat-button
+    class="mat-button"
+    style="background-color: rgb(224, 83, 83)"
+    color="warn"
+    (click)="deleteEntry()"
+    cdkFocusInitial
+  >
+    Delete
+  </button>
+</div>

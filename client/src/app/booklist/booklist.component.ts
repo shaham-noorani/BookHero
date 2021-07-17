@@ -162,7 +162,8 @@ export class BooklistComponent implements OnInit {
 
   deleteEntryVerification(volumeId): void {
     const dialogRef = this.dialog.open(deleteEntryVerificationDialog, {
-      width: '250px',
+      width: '20vw',
+      height: '12vw',
     });
 
     dialogRef.afterClosed().subscribe((shouldDelete) => {
