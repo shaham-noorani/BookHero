@@ -1,0 +1,70 @@
+<h1 mat-dialog-title style="text-align: center">
+  Update <span style="font-style: italic">{{ updatedEntry.book.title }}</span>
+</h1>
+<div class="add-a-book-container">
+  <form [formGroup]="updatedEntryFormGroup">
+    <mat-form-field>
+      <mat-label>Status</mat-label>
+      <mat-select name="addBookStatus" formControlName="status">
+        <mat-option value="Completed">Completed</mat-option>
+        <mat-option value="Dropped">Dropped</mat-option>
+        <mat-option value="On-hold">On-hold</mat-option>
+        <mat-option value="Reading">Reading</mat-option>
+        <mat-option value="Plan to read">Plan to read</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field
+      *ngIf="
+                updatedEntryFormGroup.get('status').value == 'Completed' ||
+                updatedEntryFormGroup.get('status').value == 'Dropped'
+              "
+    >
+      <mat-label>Rating</mat-label>
+      <mat-select name="addBookRating" formControlName="rating">
+        <mat-option *ngFor="let option of ratings" [value]="option.value"
+          >{{ option.text }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field
+      *ngIf="updatedEntryFormGroup.get('status').value == 'Completed'"
+    >
+      <mat-label>Review</mat-label>
+      <textarea
+        matInput
+        formControlName="review"
+        name="addBookReview"
+      ></textarea>
+    </mat-form-field>
+    <mat-form-field
+      *ngIf="
+                updatedEntryFormGroup.get('status').value == 'Reading' ||
+                updatedEntryFormGroup.get('status').value == 'On-hold'
+              "
+    >
+      <input
+        matInput
+        name="currentPage"
+        placeholder="Current Page"
+        formControlName="currentPage"
+      />
+    </mat-form-field>
+  </form>
+</div>
+<div>
+  <button
+    mat-raised-button
+    style="margin-right: 1vw; margin-left: 2.8vw"
+    (click)="cancel()"
+  >
+    Cancel
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="updateEntry()"
+    cdkFocusInitial
+  >
+    Update
+  </button>
+</div>

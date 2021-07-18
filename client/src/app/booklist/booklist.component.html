@@ -110,6 +110,13 @@
           }}</mat-card>
         </div>
         <button
+          class="book-list-entry-update-button"
+          mat-icon-button
+          (click)="toggleUpdateEntryDialog(entry)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
           class="book-list-entry-delete-button"
           mat-icon-button
           (click)="deleteEntryVerification(entry.volumeId)"
@@ -150,7 +157,7 @@
                 <mat-option
                   *ngFor="let option of newBookOptions"
                   [value]="option.volumeInfo.title"
-                  (onSelectionChange)="setBook($event)"
+                  (onSelectionChange)="setBook(option)"
                 >
                   {{ option.volumeInfo.title }} by
                   {{ option.volumeInfo.authors }}
@@ -255,6 +262,14 @@
           </mat-card-content>
           <button
             mat-raised-button
+            class="btn-block"
+            style="position: absolute; bottom: 10%; width: 90%"
+            (click)="addBookFormGroup.reset()"
+          >
+            Clear
+          </button>
+          <button
+            mat-raised-button
             color="primary"
             class="btn-block"
             type="submit"
@@ -270,11 +285,13 @@
     <mat-card class="container">
       <mat-card-title>Stats</mat-card-title>
       <mat-card-content>
-        <h3>Total books/pages read: 69/4200</h3>
-        <h3>Completed</h3>
-        <h3>Average rating: 7.2</h3>
-        <h3>Favorite Author: Dale Carnegie</h3>
-        <h3>Favorite Book: How to Win Friends and Influence People</h3>
+        <h3>Completed: {{ stats.completed }}</h3>
+        <h3>Dropped: {{ stats.dropped }}</h3>
+        <h3>On-hold: {{ stats.onHold }}</h3>
+        <h3>Reading: {{ stats.reading }}</h3>
+        <h3>Plan-to-read: {{ stats.planToRead }}</h3>
+        <h3>Pages read: {{ stats.pagesRead }}</h3>
+        <h3>Average rating: {{ stats.averageRating }}</h3>
       </mat-card-content>
     </mat-card>
   </mat-grid-tile>

@@ -12,7 +12,7 @@ export class BooksService {
 
   constructor(private http: HttpClient, private auth: AuthenticationService) {}
 
-  public searchBookByTitle(title): Observable<any> {
+  public searchBookByTitle(title: string): Observable<any> {
     return this.http.get<any>('/api/books', {
       params: {
         title: title,
@@ -41,19 +41,19 @@ export class BooksService {
     );
   }
 
-  public removeFromUserBooklist(volumeId: string) {
-    return this.http.delete('api/users/remove-from-booklist', {
+  public updateBooklistEntry(booklistEntry: BookListEntry) {
+    return this.http.put('/api/users/update-booklist-entry', booklistEntry, {
       params: {
-        volumeId: volumeId,
+        volumeId: booklistEntry.volumeId,
       },
       headers: { Authorization: `Bearer ${this.auth.getToken()}` },
     });
   }
 
-  public updateBooklistEntry(booklistEntry: BookListEntry) {
-    return this.http.put('/api/users/update-booklist-entry', booklistEntry, {
+  public removeFromUserBooklist(volumeId: string) {
+    return this.http.delete('api/users/remove-from-booklist', {
       params: {
-        volumeId: booklistEntry.volumeId,
+        volumeId: volumeId,
       },
       headers: { Authorization: `Bearer ${this.auth.getToken()}` },
     });
