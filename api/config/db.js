@@ -1,7 +1,7 @@
 require('../user/user.model');
 require('../book/book.model');
 const mongoose = require('mongoose');
-const dbURI = 'mongodb://localhost:27017/bookhero';
+const dbURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/bookhero';
 
 mongoose.set('useCreateIndex', true);
 mongoose.connect(dbURI, {
