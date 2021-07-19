@@ -1,8 +1,5 @@
 # Book Hero
-
-## Description
-
-An application for users to keep track of and share everything book related!
+An application for users to keep track of and share books they've read, are reading, and plan to read! Users can also add their friends on the platform and stay update-to-date with their latest book-related escapades.
 
 ## How to run locally
 
