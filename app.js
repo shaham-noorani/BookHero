@@ -17,7 +17,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+
+if (process.env.PROD) app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(passport.initialize());
 app.use('/api', router);

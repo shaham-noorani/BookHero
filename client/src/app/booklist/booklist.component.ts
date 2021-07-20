@@ -45,6 +45,18 @@ export class BooklistComponent implements OnInit {
     { value: 1, text: '1 - abysmal' },
   ];
 
+  checkboxes = [
+    { formControlName: 'completed', text: 'Completed', color: 'lightgreen' },
+    { formControlName: 'dropped', text: 'Dropped', color: 'rgb(226, 82, 65)' },
+    { formControlName: 'onHold', text: 'On-hold', color: 'lightcoral' },
+    {
+      formControlName: 'reading',
+      text: 'Reading',
+      color: 'rgb(60, 150, 236)',
+    },
+    { formControlName: 'planToRead', text: 'Plan to read', color: 'lightgray' },
+  ];
+
   newBookOptions: any[];
   titleSelected: string[];
   bookToAdd: any;
@@ -227,6 +239,8 @@ export class BooklistComponent implements OnInit {
   }
 
   getAverageRating(): string {
+    if (this.bookList.length == 0) return '';
+
     var totalRating = 0;
     var numberOfRatings = 0;
 

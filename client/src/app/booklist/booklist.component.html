@@ -3,64 +3,18 @@
     <mat-card class="container">
       <mat-card-title>Filters</mat-card-title>
       <section [formGroup]="filters">
-        <div>
+        <div *ngFor="let box of checkboxes">
           <p>
-            <mat-checkbox color="primary" formControlName="completed"
-              >Completed</mat-checkbox
+            <mat-checkbox
+              color="primary"
+              [formControlName]="box.formControlName"
+              >{{ box.text }}</mat-checkbox
             >
           </p>
           <div
             class="filter-legend"
-            style="background-color: lightgreen"
-            *ngIf="filters.get('completed').value"
-          ></div>
-        </div>
-        <div>
-          <p>
-            <mat-checkbox color="primary" formControlName="dropped"
-              >Dropped</mat-checkbox
-            >
-          </p>
-          <div
-            class="filter-legend"
-            style="background-color: rgb(226, 82, 65)"
-            *ngIf="filters.get('dropped').value"
-          ></div>
-        </div>
-        <div>
-          <p>
-            <mat-checkbox color="primary" formControlName="onHold"
-              >On-hold</mat-checkbox
-            >
-          </p>
-          <div
-            class="filter-legend"
-            style="background-color: lightcoral"
-            *ngIf="filters.get('onHold').value"
-          ></div>
-        </div>
-        <div>
-          <p>
-            <mat-checkbox color="primary" formControlName="reading"
-              >Reading</mat-checkbox
-            >
-          </p>
-          <div
-            class="filter-legend"
-            style="background-color: rgb(60, 150, 236)"
-            *ngIf="filters.get('reading').value"
-          ></div>
-        </div>
-        <div>
-          <p>
-            <mat-checkbox color="primary" formControlName="planToRead"
-              >Plan to read</mat-checkbox
-            >
-          </p>
-          <div
-            class="filter-legend"
-            style="background-color: lightgray"
-            *ngIf="filters.get('planToRead').value"
+            [ngStyle]="{ 'background-color': box.color }"
+            *ngIf="filters.get(box.formControlName).value"
           ></div>
         </div>
       </section>
