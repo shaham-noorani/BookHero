@@ -203,6 +203,15 @@ export class BooklistComponent implements OnInit {
   }
 
   removeHTMLTags = (str: string): string => {
+    for (let i = 0; i < str.length - 1; i++) {
+      if (
+        ['.', ',', '!', '?'].includes(str.charAt(i)) &&
+        str.charAt(i + 1) != ' '
+      ) {
+        str =
+          str.substring(0, i + 1) + ' ' + str.substring(i + 1, str.length + 1);
+      }
+    }
     return str.replace(/(<([^>]+)>)/gi, '');
   };
 }
