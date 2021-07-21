@@ -29,7 +29,7 @@ export class BooklistComponent implements OnInit {
   @Input() filters: FormGroup;
   @Input() addBookFormGroup: FormGroup;
 
-  stats: Stats = this.stat.init();
+  stats: Stats;
   ratings = Ratings;
 
   checkboxes = [
@@ -199,7 +199,9 @@ export class BooklistComponent implements OnInit {
   }
 
   updateStats() {
-    this.stats = this.stat.getStats(this.bookList);
+    this.stats = this.bookList
+      ? this.stat.getStats(this.bookList)
+      : this.stat.init();
   }
 
   removeHTMLTags = (str: string): string => {

@@ -19,7 +19,7 @@
       </div>
     </mat-grid-tile>
     <mat-grid-tile colspan="1" rowspan="1">
-      <mat-card style="height: 95%; width: 80%">
+      <mat-card style="height: 95%; width: 80%" *ngIf="user">
         <h2>Stats</h2>
         <h4 style="line-height: 12px">Completed: {{ stats.completed }}</h4>
         <h4 style="line-height: 12px">Dropped: {{ stats.dropped }}</h4>
@@ -33,7 +33,7 @@
       </mat-card>
     </mat-grid-tile>
     <mat-grid-tile colspan="1" rowspan="1">
-      <mat-card style="height: 90%; width: 80%">
+      <mat-card style="height: 90%; width: 80%" *ngIf="user">
         <h2>Friend Activity</h2>
         <mat-card-content>
           <h3>Coming soon!</h3>
