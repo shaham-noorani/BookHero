@@ -43,6 +43,10 @@ a:hover {
   text-decoration: none;
 }
 
+a::after {
+  text-decoration: none;
+}
+
 .form-wrapper {
   height: 90%;
 }

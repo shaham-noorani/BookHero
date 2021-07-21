@@ -1,7 +1,6 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <h1 [routerLink]="'/'">Book Hero</h1>
-    <span class="menu-spacer"></span>
+    <a mat-button style="font-size: 2vh" [routerLink]="'/'">Book Hero</a>
     <div fxShow="true" fxFlex fxLayout>
       <div fxFlex>
         <a mat-button *ngIf="!auth.isLoggedIn()" [routerLink]="'/login'"

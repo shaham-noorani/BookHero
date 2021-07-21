@@ -25,7 +25,7 @@
     rowspan="{{ bookList.length < 6 ? 6 : bookList.length + 1 }}"
   >
     <div class="book-list-container">
-      <mat-card *ngFor="let entry of bookList" class="book-list-entry">
+      <mat-card *ngFor="let entry of visibleBookList" class="book-list-entry">
         <img
           src="{{ entry.book.coverImage }}"
           alt=""
@@ -47,15 +47,8 @@
         <div class="book-list-entry-info">
           <mat-card
             [ngClass]="['rating-' + entry.rating, 'book-list-entry-rating']"
-            *ngIf="entry.rating"
           >
-            {{ entry.rating }} / 10
-          </mat-card>
-          <mat-card
-            [ngClass]="['rating-' + entry.rating, 'book-list-entry-rating']"
-            *ngIf="!entry.rating"
-          >
-            - / 10
+            {{ entry.rating ? entry.rating : '-' }} / 10
           </mat-card>
           <mat-card [ngClass]="['book-list-entry-category']">{{
             entry.book.categories[0]
@@ -111,7 +104,7 @@
                 <mat-option
                   *ngFor="let option of newBookOptions"
                   [value]="option.volumeInfo.title"
-                  (onSelectionChange)="setBook(option)"
+                  (onSelectionChange)="setBookToAdd(option)"
                 >
                   {{ option.volumeInfo.title }} by
                   {{ option.volumeInfo.authors }}
@@ -163,9 +156,9 @@
             >
               <input
                 matInput
-                name="currentPage"
+                name="currentPageCount"
                 placeholder="Current Page"
-                formControlName="currentPage"
+                formControlName="currentPageCount"
               />
             </mat-form-field>
             <mat-form-field
@@ -243,7 +236,7 @@
         <h3>Dropped: {{ stats.dropped }}</h3>
         <h3>On-hold: {{ stats.onHold }}</h3>
         <h3>Reading: {{ stats.reading }}</h3>
-        <h3>Plan-to-read: {{ stats.planToRead }}</h3>
+        <h3>Plan to read: {{ stats.planToRead }}</h3>
         <h3>Pages read: {{ stats.pagesRead }}</h3>
         <h3>Average rating: {{ stats.averageRating }}</h3>
       </mat-card-content>

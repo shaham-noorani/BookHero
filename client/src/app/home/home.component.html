@@ -1,30 +1,38 @@
-<mat-grid-list cols="3" rowHeight="45%">
-  <mat-grid-tile colspan="2" rowspan="2">
-    <div *ngIf="user" style="position: absolute; left: 2%; top: 5%">
-      <h1 style="padding-top: 1vh">Welcome back, {{ user.name }}!</h1>
-      <h3 style="padding-top: 1vh">
+<div class="container">
+  <mat-grid-list cols="3" rowHeight="45%">
+    <mat-grid-tile colspan="2" rowspan="2">
+      <div *ngIf="user" style="position: absolute; left: 2%; top: 5%">
+        <h1 style="padding-top: 1vh">Welcome back, {{ user.name }}!</h1>
+        <!-- <h3 style="padding-top: 1vh">
         Are you still reading
         <span style="font-style: italic">The Power of Habit?</span>
       </h3>
       <button mat-raised-button color="primary" style="padding-top: 1vh">
         You can update its entry here
-      </button>
-    </div>
-  </mat-grid-tile>
-  <mat-grid-tile colspan="1" rowspan="1">
-    <mat-card style="height: 90%; width: 80%">
-      <h2>Stats</h2>
-      <mat-card-content>
-        <p>Completed: 12 books / 4200 pages</p>
-        <p>Favorite Genre: <span style="font-style: bold">Psychology</span></p>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-  <mat-grid-tile colspan="1" rowspan="1">
-    <mat-card style="height: 90%; width: 80%">
-      <h2>Friend Activity</h2>
-      <mat-card-content>
-        <p>
+      </button> -->
+      </div>
+      <div *ngIf="!user" style="position: absolute; left: 2%; top: 5%">
+        <h1 style="padding-top: 1vh">
+          Welcome to Book Hero, your complete solution for keeping track of and
+          sharing your book list!
+        </h1>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1">
+      <mat-card style="height: 90%; width: 80%">
+        <h2>Stats</h2>
+        <mat-card-content>
+          <!-- <p>Completed: 12 books / 4200 pages</p>
+        <p>Favorite Genre: <span style="font-style: bold">Psychology</span></p> -->
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1">
+      <mat-card style="height: 90%; width: 80%">
+        <h2>Friend Activity</h2>
+        <mat-card-content>
+          <h3>Coming soon!</h3>
+          <!-- <p>
           John Doe is currently reading:
           <span style="font-style: italic"
             >How to Win Friends and Influence People</span
@@ -40,8 +48,9 @@
           Sally Johnson just finished:
           <span style="font-style: italic">The Art of War</span>
           by Sun Tzu
-        </p>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+        </p> -->
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

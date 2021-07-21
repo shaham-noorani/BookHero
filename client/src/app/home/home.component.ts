@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
         this.user = user;
       },
       (err) => {
-        console.log(err);
+        this.user = null;
       }
     );
   };

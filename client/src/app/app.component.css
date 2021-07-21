@@ -1,4 +1,7 @@
-h1:hover {
-  color: #282c34;
-  cursor: pointer;
+a {
+  text-decoration: none !important;
+}
+
+a:focus {
+  outline: none;
 }

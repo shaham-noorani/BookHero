@@ -1,15 +1,21 @@
+import { debounceTime } from 'rxjs/operators';
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-
-import { AuthenticationService } from '../authentication.service';
-import { BookListEntry } from './book';
-import { BooksService } from '../books.service';
-import { debounceTime } from 'rxjs/operators';
 import {
   MatDialog,
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
+
+import {
+  BookListEntry,
+  Ratings,
+  StatusMapToCamelCase,
+  statusOrder,
+} from './book';
+import { AuthenticationService } from '../authentication.service';
+import { BooksService } from '../books.service';
+import { StatsService, Stats } from '../stats.service';
 
 @Component({
   selector: 'app-booklist',
@@ -18,32 +24,13 @@ import {
 })
 export class BooklistComponent implements OnInit {
   bookList: BookListEntry[];
+  visibleBookList: BookListEntry[];
 
   @Input() filters: FormGroup;
   @Input() addBookFormGroup: FormGroup;
 
-  stats = {
-    completed: 0,
-    dropped: 0,
-    onHold: 0,
-    reading: 0,
-    planToRead: 0,
-    pagesRead: 0,
-    averageRating: '0',
-  };
-
-  ratings = [
-    { value: 10, text: '10 - masterpiece' },
-    { value: 9, text: '9 - really good' },
-    { value: 8, text: '8 - great' },
-    { value: 7, text: '7 - good' },
-    { value: 6, text: '6 - okay' },
-    { value: 5, text: '5 - not great' },
-    { value: 4, text: '4 - bad' },
-    { value: 3, text: '3 - really bad' },
-    { value: 2, text: '2 - horrible' },
-    { value: 1, text: '1 - abysmal' },
-  ];
+  stats: Stats = this.stat.init();
+  ratings = Ratings;
 
   checkboxes = [
     { formControlName: 'completed', text: 'Completed', color: 'lightgreen' },
@@ -65,7 +52,8 @@ export class BooklistComponent implements OnInit {
     private fb: FormBuilder,
     private auth: AuthenticationService,
     public book: BooksService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public stat: StatsService
   ) {
     this.filters = fb.group({
       completed: true,
@@ -79,21 +67,14 @@ export class BooklistComponent implements OnInit {
       title: '',
       status: 'Reading',
       rating: '',
-      currentPage: 0,
+      currentPageCount: 0,
       review: '',
       startDate: Date.now(),
       endDate: Date.now(),
     });
   }
 
-  statusOrder: Map<string, number> = new Map();
   ngOnInit(): void {
-    this.statusOrder.set('Completed', 1);
-    this.statusOrder.set('Dropped', 2);
-    this.statusOrder.set('On-hold', 3);
-    this.statusOrder.set('Reading', 4);
-    this.statusOrder.set('Plan to read', 5);
-
     this.getBooklist();
 
     this.onChanges();
@@ -107,16 +88,33 @@ export class BooklistComponent implements OnInit {
 
   setBookList = (user) => {
     this.bookList = user.bookList;
+
     this.updateStats();
+    this.sortBookList();
+    this.filterBookList();
+  };
+
+  sortBookList = (): void => {
     this.bookList.sort((a, b) =>
-      this.statusOrder.get(a.status) < this.statusOrder.get(b.status) ? -1 : 1
+      statusOrder.get(a.status) < statusOrder.get(b.status) ? -1 : 1
     );
-    this.bookList = this.bookList.filter((entry) =>
-      this.canDisplay(entry.status)
+  };
+
+  filterBookList = (): void => {
+    this.visibleBookList = this.bookList.filter(
+      (entry) => this.filters.get(StatusMapToCamelCase.get(entry.status)).value
     );
   };
 
   onChanges() {
+    this.updateNewBookOptionsDropDown();
+
+    this.filters.valueChanges.subscribe(() => {
+      this.filterBookList();
+    });
+  }
+
+  updateNewBookOptionsDropDown(): void {
     this.addBookFormGroup
       .get('title')
       .valueChanges.pipe(debounceTime(250))
@@ -125,50 +123,35 @@ export class BooklistComponent implements OnInit {
           this.newBookOptions = books;
         });
       });
-
-    this.filters.valueChanges.subscribe(() => {
-      this.getBooklist();
-    });
   }
 
-  removeHTMLTags = (str: string): string => {
-    return str.replace(/(<([^>]+)>)/gi, '');
-  };
-
-  canDisplay = (status): boolean => {
-    if (status == 'Completed') return this.filters.value.completed;
-    if (status == 'Dropped') return this.filters.value.dropped;
-    if (status == 'On-hold') return this.filters.value.onHold;
-    if (status == 'Reading') return this.filters.value.reading;
-    if (status == 'Plan to read') return this.filters.value.planToRead;
-    return false;
-  };
-
-  setBook(book) {
-    var title = book.volumeInfo.title;
-    if (!title) {
-      this.titleSelected = [];
-    } else {
-      this.titleSelected = [title];
-    }
-
+  setBookToAdd(book) {
+    this.titleSelected = [book.volumeInfo.title];
     this.bookToAdd = book;
 
     this.addBookFormGroup.get('title').reset();
   }
 
   addBookToUserList() {
+    const dataFromAddBookFormGroup = (({
+      status,
+      review,
+      startDate,
+      endDate,
+      rating,
+      currentPageCount,
+    }) => ({ status, review, startDate, endDate, rating, currentPageCount }))(
+      this.addBookFormGroup.getRawValue()
+    );
+
+    dataFromAddBookFormGroup.currentPageCount =
+      this.addBookFormGroup.get('status').value == 'Completed'
+        ? this.bookToAdd.volumeInfo.pageCount
+        : this.addBookFormGroup.get('currentPageCount').value;
+
     const booklistEntryToAdd: BookListEntry = {
       volumeId: this.bookToAdd.id,
-      status: this.addBookFormGroup.get('status').value,
-      currentPageCount:
-        this.addBookFormGroup.get('status').value == 'Completed'
-          ? this.bookToAdd.volumeInfo.pageCount
-          : this.addBookFormGroup.get('currentPage').value,
-      rating: this.addBookFormGroup.get('rating').value,
-      review: this.addBookFormGroup.get('review').value,
-      startDate: this.addBookFormGroup.get('startDate').value,
-      endDate: this.addBookFormGroup.get('endDate').value,
+      ...dataFromAddBookFormGroup,
     };
 
     this.book.addToUserBooklist(booklistEntryToAdd).subscribe((res) => {
@@ -216,43 +199,12 @@ export class BooklistComponent implements OnInit {
   }
 
   updateStats() {
-    this.stats = {
-      completed: this.bookList.filter((entry) => entry.status == 'Completed')
-        .length,
-      dropped: this.bookList.filter((entry) => entry.status == 'Dropped')
-        .length,
-      onHold: this.bookList.filter((entry) => entry.status == 'On-hold').length,
-      reading: this.bookList.filter((entry) => entry.status == 'Reading')
-        .length,
-      planToRead: this.bookList.filter(
-        (entry) => entry.status == 'Plan to read'
-      ).length,
-      pagesRead: this.getPagesRead(),
-      averageRating: this.getAverageRating(),
-    };
+    this.stats = this.stat.getStats(this.bookList);
   }
 
-  getPagesRead(): number {
-    var total = 0;
-    this.bookList.forEach((entry) => (total += entry.currentPageCount));
-    return total;
-  }
-
-  getAverageRating(): string {
-    if (this.bookList.length == 0) return '';
-
-    var totalRating = 0;
-    var numberOfRatings = 0;
-
-    this.bookList.forEach((entry) => {
-      if (entry.rating) {
-        totalRating += entry.rating;
-        numberOfRatings++;
-      }
-    });
-
-    return (Math.round((totalRating / numberOfRatings) * 100) / 100).toFixed(2);
-  }
+  removeHTMLTags = (str: string): string => {
+    return str.replace(/(<([^>]+)>)/gi, '');
+  };
 }
 
 @Component({
@@ -261,18 +213,7 @@ export class BooklistComponent implements OnInit {
 })
 export class updateEntryDialog {
   @Input() updatedEntryFormGroup: FormGroup;
-  ratings = [
-    { value: 10, text: '10 - masterpiece' },
-    { value: 9, text: '9 - really good' },
-    { value: 8, text: '8 - great' },
-    { value: 7, text: '7 - good' },
-    { value: 6, text: '6 - okay' },
-    { value: 5, text: '5 - not great' },
-    { value: 4, text: '4 - bad' },
-    { value: 3, text: '3 - really bad' },
-    { value: 2, text: '2 - horrible' },
-    { value: 1, text: '1 - abysmal' },
-  ];
+  ratings = Ratings;
 
   constructor(
     public dialogRef: MatDialogRef<updateEntryDialog>,
