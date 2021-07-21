@@ -19,12 +19,17 @@
       </div>
     </mat-grid-tile>
     <mat-grid-tile colspan="1" rowspan="1">
-      <mat-card style="height: 90%; width: 80%">
+      <mat-card style="height: 95%; width: 80%">
         <h2>Stats</h2>
-        <mat-card-content>
-          <!-- <p>Completed: 12 books / 4200 pages</p>
-        <p>Favorite Genre: <span style="font-style: bold">Psychology</span></p> -->
-        </mat-card-content>
+        <h4 style="line-height: 12px">Completed: {{ stats.completed }}</h4>
+        <h4 style="line-height: 12px">Dropped: {{ stats.dropped }}</h4>
+        <h4 style="line-height: 12px">On-hold: {{ stats.onHold }}</h4>
+        <h4 style="line-height: 12px">Reading: {{ stats.reading }}</h4>
+        <h4 style="line-height: 12px">Plan to read: {{ stats.planToRead }}</h4>
+        <h4 style="line-height: 12px">Pages read: {{ stats.pagesRead }}</h4>
+        <h4 style="line-height: 12px">
+          Average rating: {{ stats.averageRating }}
+        </h4>
       </mat-card>
     </mat-grid-tile>
     <mat-grid-tile colspan="1" rowspan="1">
