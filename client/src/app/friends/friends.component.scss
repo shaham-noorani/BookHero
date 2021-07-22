@@ -1,37 +1,11 @@
-@keyframes fadeIn {
-  from {
-    top: 20%;
-    opacity: 0;
-  }
-  to {
-    top: 100;
-    opacity: 1;
-  }
-}
-
-.wrapper {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  animation: fadeIn 1000ms ease;
-}
-
-h1 {
-  font-size: 50px;
-  margin-bottom: 0;
-  line-height: 1;
-  font-weight: 700;
-}
-
-.dot {
-  color: rgb(60, 150, 236);
-}
-
 .container {
-  background: #00091b;
-  color: #fff;
+  width: 90%;
+  height: 90%;
+}
+
+.friends-list-container {
   width: 100%;
-  height: 93.2%;
-  margin: 0 0 0 0;
+  position: absolute;
+  top: 1vh;
+  height: 100%;
 }

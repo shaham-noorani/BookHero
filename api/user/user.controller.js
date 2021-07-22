@@ -82,17 +82,54 @@ module.exports.updateBooklistEntry = async (req, res) => {
   });
 };
 
-module.exports.getUser = (req, res, next) => {
-  User.findById(req.params.id).exec((err, user) => {
-    if (err) {
-      next(err);
-    } else {
-      res.status(200).json({
-        name: user.name,
-        _id: user._id,
-        bookList: user.bookList,
-        minutesPerPageRead: user.minutesPerPageRead,
-      });
+module.exports.addFriend = async (req, res) => {
+  const friend = await User.findOne({
+    friendCode: req.params.friendcode,
+  }).exec();
+  if (!friend)
+    res.status(404).json({
+      err: `No user with friend code ${req.params.friendCode} found.`,
+    });
+
+  const friendId = friend._id;
+  User.updateOne(
+    { _id: req.payload._id },
+    {
+      $addToSet: { friends: [friendId] },
     }
+  ).exec((err, user) => {
+    res.status(200).json(user);
+  });
+};
+
+module.exports.setFriendCode = async (req, res) => {
+  const friend = await User.findOne({
+    friendCode: req.body.friendCode,
+  });
+
+  if (friend) {
+    res.status(409).json({
+      err: `Friend code ${req.body.friendCode} already in use.`,
+    });
+  }
+
+  User.updateOne(
+    { _id: req.payload._id },
+    {
+      friendCode: req.body.friendCode,
+    }
+  ).exec((err, user) => {
+    res.status(200).json(user);
+  });
+};
+
+module.exports.getUser = async (req, res) => {
+  User.findById(req.params.id).exec((err, user) => {
+    res.status(200).json({
+      name: user.name,
+      _id: user._id,
+      bookList: user.bookList,
+      minutesPerPageRead: user.minutesPerPageRead,
+    });
   });
 };

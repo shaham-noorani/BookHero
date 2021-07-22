@@ -1,27 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { Book, BookListEntry } from './booklist/book';
+import { Observable } from 'rxjs';
+import { BookListEntry } from './booklist/book';
 import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BooksService {
-  public booksData;
-
   constructor(private http: HttpClient, private auth: AuthenticationService) {}
 
   public searchBookByTitle(title: string): Observable<any> {
-    return this.http.get<any>('/api/books', {
+    return this.http.get('/api/books', {
       params: {
         title: title,
       },
     });
   }
 
-  public addToUserBooklist(booklistEntry: BookListEntry) {
-    return this.http.post<any>(
+  public addToUserBooklist(booklistEntry: BookListEntry): Observable<any> {
+    return this.http.post(
       '/api/users/add-to-booklist',
       {
         status: booklistEntry.status,
@@ -41,7 +39,7 @@ export class BooksService {
     );
   }
 
-  public updateBooklistEntry(booklistEntry: BookListEntry) {
+  public updateBooklistEntry(booklistEntry: BookListEntry): Observable<any> {
     return this.http.put('/api/users/update-booklist-entry', booklistEntry, {
       params: {
         volumeId: booklistEntry.volumeId,
@@ -50,7 +48,7 @@ export class BooksService {
     });
   }
 
-  public removeFromUserBooklist(volumeId: string) {
+  public removeFromUserBooklist(volumeId: string): Observable<any> {
     return this.http.delete('api/users/remove-from-booklist', {
       params: {
         volumeId: volumeId,

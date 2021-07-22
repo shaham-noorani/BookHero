@@ -1,5 +1,107 @@
-<div class="container">
+<!-- <div class="container">
   <div class="wrapper">
     <h1>Friends Page Coming Soon<span class="dot">.</span></h1>
-  </div>
-</div>
+  </div> -->
+<!-- </div> -->
+
+<!-- <mat-card
+  ><form (submit)="updateFriendCode()" class="update-friend-code-form">
+    <mat-form-field class="formField">
+      <mat-card-subtitle style="margin-bottom: 1vh"
+        >Friend code:</mat-card-subtitle
+      >
+      <input
+        style="margin-top: 2vh"
+        matInput
+        class="inputField"
+        name="friendCode"
+        [(ngModel)]="newFriendCode"
+        [placeholder]="!newFriendCode ? friendCode : 'Friend Code'"
+        type="text"
+      />
+    </mat-form-field>
+    <button mat-stroked-button color="accent" class="btn-block">Update</button>
+  </form></mat-card
+> -->
+
+<h1 style="padding-left: 2vw; padding-top: 20px; font-size: 4vh">
+  Friends List:
+</h1>
+<mat-grid-list cols="4" rowHeight="20vh">
+  <mat-grid-tile colspan="3" [rowspan]="friendsList.length">
+    <mat-card class="container" *ngFor="let friend of friendsList">
+      <h1>{{ friend.name }}</h1>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="1">
+    <mat-card class="container">
+      <h1>Friend code:</h1>
+      <div style="width: 40%; height: 100%; float: left">
+        <form
+          *ngIf="updatingFriendCode"
+          (submit)="updateFriendCode()"
+          class="update-friend-code-form"
+        >
+          <mat-form-field class="formField">
+            <input
+              matInput
+              class="inputField"
+              name="friendCode"
+              [(ngModel)]="newFriendCode"
+              placeholder="Friend Code"
+              type="text"
+              color="primary"
+            />
+          </mat-form-field>
+          <button mat-raised-button color="accent" class="btn-block">
+            Update
+          </button>
+        </form>
+        <h2 *ngIf="!updatingFriendCode" color="primary">
+          {{ friendCode ? friendCode : 'Please set a friend code!' }}
+        </h2>
+      </div>
+      <div style="width: 55%; height: 100%; float: right">
+        <button
+          *ngIf="!updatingFriendCode"
+          class="friend-code-update-button"
+          mat-icon-button
+          (click)="updatingFriendCode = true"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          *ngIf="updatingFriendCode"
+          class="friend-code-cancel-button"
+          mat-icon-button
+          (click)="updatingFriendCode = false"
+        >
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="1" rowspan="1">
+    <mat-card class="container">
+      <h1>Add a friend:</h1>
+      <div style="width: 40%; height: 100%; float: left">
+        <form (submit)="addFriend()">
+          <mat-form-field class="formField">
+            <input
+              matInput
+              class="inputField"
+              name="friendCode"
+              [(ngModel)]="newFriendCode"
+              placeholder="Friend Code"
+              type="text"
+              color="primary"
+            />
+          </mat-form-field>
+          <button mat-raised-button color="accent" class="btn-block">
+            Update
+          </button>
+        </form>
+      </div>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

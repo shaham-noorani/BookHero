@@ -24,7 +24,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { BooklistComponent } from './booklist/booklist.component';
 import { updateEntryDialog } from './booklist/booklist.component';
 import { deleteEntryVerificationDialog } from './booklist/booklist.component';
-import { FriendsComponent } from './friends/friends.component';
+import {
+  errorSnackBarComponent,
+  FriendsComponent,
+} from './friends/friends.component';
 import { TimelineComponent } from './timeline/timeline.component';
 
 @NgModule({
@@ -39,6 +42,7 @@ import { TimelineComponent } from './timeline/timeline.component';
     deleteEntryVerificationDialog,
     FriendsComponent,
     TimelineComponent,
+    errorSnackBarComponent,
   ],
   imports: [
     BrowserModule,
