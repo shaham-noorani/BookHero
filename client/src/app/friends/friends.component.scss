@@ -1,11 +1,17 @@
 .container {
-  width: 90%;
-  height: 90%;
+  width: 80%;
+  height: 95%;
 }
 
 .friends-list-container {
-  width: 100%;
+  width: 90%;
   position: absolute;
   top: 1vh;
+  left: 4vw;
   height: 100%;
+}
+
+.friend-entry {
+  margin: 0 0 10px 0;
+  height: 25vh;
 }

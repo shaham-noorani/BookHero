@@ -13,6 +13,16 @@ export class UsersService {
     return this.http.get('api/users/' + id.toString());
   }
 
+  public addFriend(friendCode: string): Observable<any> {
+    return this.http.post(
+      'api/users/add-friend',
+      { friendCode: friendCode },
+      {
+        headers: { Authorization: `Bearer ${this.auth.getToken()}` },
+      }
+    );
+  }
+
   public updateFriendCode(friendCode: string): Observable<any> {
     return this.http.post(
       'api/users/set-friend-code/',

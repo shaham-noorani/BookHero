@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { bookListEntrySchema } = require('../book/book.model');
 const User = mongoose.model('User');
 const Book = mongoose.model('Book');
 const BookListEntry = mongoose.model('BookListEntry');
@@ -84,18 +83,29 @@ module.exports.updateBooklistEntry = async (req, res) => {
 
 module.exports.addFriend = async (req, res) => {
   const friend = await User.findOne({
-    friendCode: req.params.friendcode,
-  }).exec();
-  if (!friend)
+    friendCode: req.body.friendCode,
+  });
+  if (!friend || friend._id == req.payload._id) {
     res.status(404).json({
-      err: `No user with friend code ${req.params.friendCode} found.`,
+      err: `No user with friend code ${req.body.friendCode} found.`,
     });
+    return;
+  }
 
   const friendId = friend._id;
   User.updateOne(
     { _id: req.payload._id },
     {
       $addToSet: { friends: [friendId] },
+    }
+  ).exec((err, user) => {
+    // res.status(200).json(user);
+  });
+
+  User.updateOne(
+    { _id: friendId },
+    {
+      $addToSet: { friends: [req.payload._id] },
     }
   ).exec((err, user) => {
     res.status(200).json(user);
@@ -111,6 +121,7 @@ module.exports.setFriendCode = async (req, res) => {
     res.status(409).json({
       err: `Friend code ${req.body.friendCode} already in use.`,
     });
+    return;
   }
 
   User.updateOne(

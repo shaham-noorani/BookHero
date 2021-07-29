@@ -24,14 +24,29 @@
   </form></mat-card
 > -->
 
-<h1 style="padding-left: 2vw; padding-top: 20px; font-size: 4vh">
-  Friends List:
+<h1 style="padding-left: 4.5vw; padding-top: 20px; font-size: 4vh">
+  Friends List
 </h1>
 <mat-grid-list cols="4" rowHeight="20vh">
-  <mat-grid-tile colspan="3" [rowspan]="friendsList.length">
-    <mat-card class="container" *ngFor="let friend of friendsList">
-      <h1>{{ friend.name }}</h1>
-    </mat-card>
+  <mat-grid-tile
+    colspan="3"
+    [rowspan]="friendsList.length ? friendsList.length + 1 : 2"
+  >
+    <div class="friends-list-container">
+      <mat-card class="friend-entry" *ngFor="let friend of friendsList">
+        <h1>{{ friend.name }}</h1>
+        <h3>Completed: {{ friend.stats.completed }}</h3>
+        <h3>Reading: {{ friend.stats.reading }}</h3>
+        <h3>Pages read: {{ friend.stats.pagesRead }}</h3>
+        <h3>Average rating: {{ friend.stats.averageRating }}</h3>
+      </mat-card>
+      <mat-card class="friend-entry" *ngIf="friendsList.length == 0">
+        <h3>
+          Add some friends using the card on the right, or share your friend
+          code with others!
+        </h3>
+      </mat-card>
+    </div>
   </mat-grid-tile>
   <mat-grid-tile colspan="1" rowspan="1">
     <mat-card class="container">
@@ -91,7 +106,7 @@
               matInput
               class="inputField"
               name="friendCode"
-              [(ngModel)]="newFriendCode"
+              [(ngModel)]="addFriendCode"
               placeholder="Friend Code"
               type="text"
               color="primary"

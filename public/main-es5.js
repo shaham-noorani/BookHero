@@ -390,7 +390,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       path: 'profile',
       component: _profile_profile_component__WEBPACK_IMPORTED_MODULE_5__["ProfileComponent"]
     }, {
-      path: 'my-list',
+      path: 'booklist',
       component: _booklist_booklist_component__WEBPACK_IMPORTED_MODULE_6__["BooklistComponent"]
     }, {
       path: 'friends',
@@ -542,7 +542,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", "/my-list");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", "/booklist");
       }
     }
 
@@ -590,16 +590,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function AppComponent_a_13_Template(rf, ctx) {
       if (rf & 1) {
-        var _r60 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r61 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "a", 8);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AppComponent_a_13_Template_a_click_0_listener() {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r60);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r61);
 
-          var ctx_r59 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r60 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r59.auth.logout();
+          return ctx_r60.auth.logout();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Logout");
@@ -865,7 +865,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     (function () {
       (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵsetNgModuleScope"](AppModule, {
-        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"], _register_register_component__WEBPACK_IMPORTED_MODULE_8__["RegisterComponent"], _profile_profile_component__WEBPACK_IMPORTED_MODULE_9__["ProfileComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_10__["LoginComponent"], _home_home_component__WEBPACK_IMPORTED_MODULE_11__["HomeComponent"], _booklist_booklist_component__WEBPACK_IMPORTED_MODULE_13__["BooklistComponent"], _booklist_booklist_component__WEBPACK_IMPORTED_MODULE_13__["updateEntryDialog"], _booklist_booklist_component__WEBPACK_IMPORTED_MODULE_13__["deleteEntryVerificationDialog"], _friends_friends_component__WEBPACK_IMPORTED_MODULE_14__["FriendsComponent"], _timeline_timeline_component__WEBPACK_IMPORTED_MODULE_15__["TimelineComponent"], _friends_friends_component__WEBPACK_IMPORTED_MODULE_14__["errorSnackBarComponent"]],
+        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"], _register_register_component__WEBPACK_IMPORTED_MODULE_8__["RegisterComponent"], _profile_profile_component__WEBPACK_IMPORTED_MODULE_9__["ProfileComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_10__["LoginComponent"], _home_home_component__WEBPACK_IMPORTED_MODULE_11__["HomeComponent"], _booklist_booklist_component__WEBPACK_IMPORTED_MODULE_13__["BooklistComponent"], _booklist_booklist_component__WEBPACK_IMPORTED_MODULE_13__["updateEntryDialog"], _booklist_booklist_component__WEBPACK_IMPORTED_MODULE_13__["deleteEntryVerificationDialog"], _friends_friends_component__WEBPACK_IMPORTED_MODULE_14__["FriendsComponent"], _timeline_timeline_component__WEBPACK_IMPORTED_MODULE_15__["TimelineComponent"]],
         imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_1__["AppRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["ReactiveFormsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_12__["HttpClientModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_3__["BrowserAnimationsModule"], _angular_material_module__WEBPACK_IMPORTED_MODULE_4__["AngularMaterialModule"], _angular_flex_layout__WEBPACK_IMPORTED_MODULE_7__["FlexLayoutModule"]]
       });
     })();
@@ -876,7 +876,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵsetClassMetadata"](AppModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_5__["NgModule"],
         args: [{
-          declarations: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"], _register_register_component__WEBPACK_IMPORTED_MODULE_8__["RegisterComponent"], _profile_profile_component__WEBPACK_IMPORTED_MODULE_9__["ProfileComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_10__["LoginComponent"], _home_home_component__WEBPACK_IMPORTED_MODULE_11__["HomeComponent"], _booklist_booklist_component__WEBPACK_IMPORTED_MODULE_13__["BooklistComponent"], _booklist_booklist_component__WEBPACK_IMPORTED_MODULE_13__["updateEntryDialog"], _booklist_booklist_component__WEBPACK_IMPORTED_MODULE_13__["deleteEntryVerificationDialog"], _friends_friends_component__WEBPACK_IMPORTED_MODULE_14__["FriendsComponent"], _timeline_timeline_component__WEBPACK_IMPORTED_MODULE_15__["TimelineComponent"], _friends_friends_component__WEBPACK_IMPORTED_MODULE_14__["errorSnackBarComponent"]],
+          declarations: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"], _register_register_component__WEBPACK_IMPORTED_MODULE_8__["RegisterComponent"], _profile_profile_component__WEBPACK_IMPORTED_MODULE_9__["ProfileComponent"], _login_login_component__WEBPACK_IMPORTED_MODULE_10__["LoginComponent"], _home_home_component__WEBPACK_IMPORTED_MODULE_11__["HomeComponent"], _booklist_booklist_component__WEBPACK_IMPORTED_MODULE_13__["BooklistComponent"], _booklist_booklist_component__WEBPACK_IMPORTED_MODULE_13__["updateEntryDialog"], _booklist_booklist_component__WEBPACK_IMPORTED_MODULE_13__["deleteEntryVerificationDialog"], _friends_friends_component__WEBPACK_IMPORTED_MODULE_14__["FriendsComponent"], _timeline_timeline_component__WEBPACK_IMPORTED_MODULE_15__["TimelineComponent"]],
           imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_1__["AppRoutingModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["ReactiveFormsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_12__["HttpClientModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_3__["BrowserAnimationsModule"], _angular_material_module__WEBPACK_IMPORTED_MODULE_4__["AngularMaterialModule"], _angular_flex_layout__WEBPACK_IMPORTED_MODULE_7__["FlexLayoutModule"]],
           providers: [],
           bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
@@ -2820,7 +2820,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     !*** ./src/app/friends/friends.component.ts ***!
     \**********************************************/
 
-  /*! exports provided: FriendsComponent, errorSnackBarComponent */
+  /*! exports provided: FriendsComponent */
 
   /***/
   function srcAppFriendsFriendsComponentTs(module, __webpack_exports__, __webpack_require__) {
@@ -2832,12 +2832,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     __webpack_require__.d(__webpack_exports__, "FriendsComponent", function () {
       return FriendsComponent;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "errorSnackBarComponent", function () {
-      return errorSnackBarComponent;
     });
     /* harmony import */
 
@@ -2866,55 +2860,61 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _stats_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../stats.service */
+    "./src/app/stats.service.ts");
+    /* harmony import */
+
+
+    var _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! @angular/material/grid-list */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/grid-list.js");
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
     /* harmony import */
 
 
-    var _angular_material_card__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    var _angular_material_card__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! @angular/material/card */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/card.js");
     /* harmony import */
 
 
-    var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! @angular/forms */
     "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
     /* harmony import */
 
 
-    var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! @angular/material/form-field */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/form-field.js");
     /* harmony import */
 
 
-    var _angular_material_input__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    var _angular_material_input__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
     /*! @angular/material/input */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/input.js");
     /* harmony import */
 
 
-    var _angular_material_button__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    var _angular_material_button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! @angular/material/button */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/button.js");
     /* harmony import */
 
 
-    var _angular_material_icon__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    var _angular_material_icon__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
     /*! @angular/material/icon */
     "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/icon.js");
 
-    function FriendsComponent_mat_card_3_Template(rf, ctx) {
+    function FriendsComponent_mat_card_5_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-card", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-card", 18);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h1");
 
@@ -2922,49 +2922,103 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "h3");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "h3");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "h3");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "h3");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
 
       if (rf & 2) {
-        var friend_r44 = ctx.$implicit;
+        var friend_r45 = ctx.$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](friend_r44.name);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](friend_r45.name);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Completed: ", friend_r45.stats.completed, "");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Reading: ", friend_r45.stats.reading, "");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Pages read: ", friend_r45.stats.pagesRead, "");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Average rating: ", friend_r45.stats.averageRating, "");
       }
     }
 
-    function FriendsComponent_form_9_Template(rf, ctx) {
+    function FriendsComponent_mat_card_6_Template(rf, ctx) {
       if (rf & 1) {
-        var _r46 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-card", 18);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "form", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "h3");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function FriendsComponent_form_9_Template_form_submit_0_listener() {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r46);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " Add some friends using the card on the right, or share your friend code with others! ");
 
-          var ctx_r45 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          return ctx_r45.updateFriendCode();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+    }
+
+    function FriendsComponent_form_12_Template(rf, ctx) {
+      if (rf & 1) {
+        var _r47 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "form", 19);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function FriendsComponent_form_12_Template_form_submit_0_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r47);
+
+          var ctx_r46 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r46.updateFriendCode();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-form-field", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-form-field", 15);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "input", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "input", 16);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function FriendsComponent_form_9_Template_input_ngModelChange_2_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r46);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function FriendsComponent_form_12_Template_input_ngModelChange_2_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r47);
 
-          var ctx_r47 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r48 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r47.newFriendCode = $event;
+          return ctx_r48.newFriendCode = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "button", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "button", 17);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " Update ");
 
@@ -2974,17 +3028,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r40 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r41 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r40.newFriendCode);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r41.newFriendCode);
       }
     }
 
-    function FriendsComponent_h2_10_Template(rf, ctx) {
+    function FriendsComponent_h2_13_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "h2", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "h2", 20);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
 
@@ -2992,26 +3046,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r41 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r42 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r41.friendCode);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r42.friendCode ? ctx_r42.friendCode : "Please set a friend code!", " ");
       }
     }
 
-    function FriendsComponent_button_12_Template(rf, ctx) {
+    function FriendsComponent_button_15_Template(rf, ctx) {
       if (rf & 1) {
-        var _r49 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r50 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 21);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FriendsComponent_button_12_Template_button_click_0_listener() {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r49);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FriendsComponent_button_15_Template_button_click_0_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r50);
 
-          var ctx_r48 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r49 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r48.updatingFriendCode = true;
+          return ctx_r49.updatingFriendCode = true;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-icon");
@@ -3024,18 +3078,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }
 
-    function FriendsComponent_button_13_Template(rf, ctx) {
+    function FriendsComponent_button_16_Template(rf, ctx) {
       if (rf & 1) {
-        var _r51 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r52 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 22);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FriendsComponent_button_13_Template_button_click_0_listener() {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r51);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FriendsComponent_button_16_Template_button_click_0_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r52);
 
-          var ctx_r50 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r51 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r50.updatingFriendCode = false;
+          return ctx_r51.updatingFriendCode = false;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-icon");
@@ -3051,12 +3105,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var FriendsComponent =
     /*#__PURE__*/
     function () {
-      function FriendsComponent(auth, users, _snackBar) {
+      function FriendsComponent(auth, users, _snackBar, stats) {
         _classCallCheck(this, FriendsComponent);
 
         this.auth = auth;
         this.users = users;
         this._snackBar = _snackBar;
+        this.stats = stats;
         this.friendsList = [];
         this.updatingFriendCode = false;
       }
@@ -3064,14 +3119,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(FriendsComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
+          this.updateFriendsList();
+        }
+      }, {
+        key: "updateFriendsList",
+        value: function updateFriendsList() {
           var _this10 = this;
 
           this.auth.profile().subscribe(function (user) {
             _this10.friendCode = user.friendCode;
 
             _this10.generateFriendsList(user.friends);
-          }, function (err) {
-            console.error(err);
           });
         }
       }, {
@@ -3079,11 +3137,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function generateFriendsList(friendIds) {
           var _this11 = this;
 
+          this.friendsList = [];
           friendIds.forEach(function (id) {
             _this11.users.getUser(id).subscribe(function (user) {
-              console.log(user);
-
-              _this11.friendsList.push(user);
+              _this11.friendsList.push(Object.assign({
+                stats: _this11.stats.getStats(user.bookList)
+              }, user));
             });
           });
         }
@@ -3092,21 +3151,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function updateFriendCode() {
           var _this12 = this;
 
-          console.log('ASDAS');
           this.users.updateFriendCode(this.newFriendCode).subscribe(function (res) {
             _this12.friendCode = _this12.newFriendCode;
             _this12.updatingFriendCode = false;
             _this12.newFriendCode = '';
           }, function (err) {
-            return _this12.openErrorSnackBar();
+            return _this12.openErrorSnackBar('This friend code is already in use...');
+          });
+        }
+      }, {
+        key: "addFriend",
+        value: function addFriend() {
+          var _this13 = this;
+
+          this.users.addFriend(this.addFriendCode).subscribe(function (res) {
+            _this13.updateFriendsList();
+
+            _this13.addFriendCode = '';
+          }, function (err) {
+            _this13.openErrorSnackBar('No user found with friend code ' + _this13.addFriendCode);
           });
         }
       }, {
         key: "openErrorSnackBar",
-        value: function openErrorSnackBar() {
-          this._snackBar.openFromComponent(errorSnackBarComponent, {
-            duration: 5000
-          });
+        value: function openErrorSnackBar(message) {
+          this._snackBar.open(message, 'clear');
         }
       }]);
 
@@ -3114,55 +3183,108 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }();
 
     FriendsComponent.ɵfac = function FriendsComponent_Factory(t) {
-      return new (t || FriendsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_authentication_service__WEBPACK_IMPORTED_MODULE_1__["AuthenticationService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_users_service__WEBPACK_IMPORTED_MODULE_2__["UsersService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"]));
+      return new (t || FriendsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_authentication_service__WEBPACK_IMPORTED_MODULE_1__["AuthenticationService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_users_service__WEBPACK_IMPORTED_MODULE_2__["UsersService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_stats_service__WEBPACK_IMPORTED_MODULE_4__["StatsService"]));
     };
 
     FriendsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
       type: FriendsComponent,
       selectors: [["app-friends"]],
       inputs: {
-        newFriendCode: "newFriendCode"
+        newFriendCode: "newFriendCode",
+        addFriendCode: "addFriendCode"
       },
-      decls: 14,
-      vars: 6,
-      consts: [["cols", "4", "rowHeight", "20vh"], ["colspan", "3", 3, "rowspan"], [1, "friends-list-container"], ["class", "container", 4, "ngFor", "ngForOf"], ["colspan", "1", "rowspan", "1"], [1, "container"], [2, "width", "40%", "height", "100%", "float", "left"], ["class", "update-friend-code-form", 3, "submit", 4, "ngIf"], ["color", "primary", 4, "ngIf"], [2, "width", "55%", "height", "100%", "float", "right"], ["class", "friend-code-update-button", "mat-icon-button", "", 3, "click", 4, "ngIf"], ["class", "friend-code-cancel-button", "mat-icon-button", "", 3, "click", 4, "ngIf"], [1, "update-friend-code-form", 3, "submit"], [1, "formField"], ["matInput", "", "name", "friendCode", "placeholder", "Friend Code", "type", "text", "color", "primary", 1, "inputField", 3, "ngModel", "ngModelChange"], ["mat-raised-button", "", "color", "accent", 1, "btn-block"], ["color", "primary"], ["mat-icon-button", "", 1, "friend-code-update-button", 3, "click"], ["mat-icon-button", "", 1, "friend-code-cancel-button", 3, "click"]],
+      decls: 27,
+      vars: 8,
+      consts: [[2, "padding-left", "4.5vw", "padding-top", "20px", "font-size", "4vh"], ["cols", "4", "rowHeight", "20vh"], ["colspan", "3", 3, "rowspan"], [1, "friends-list-container"], ["class", "friend-entry", 4, "ngFor", "ngForOf"], ["class", "friend-entry", 4, "ngIf"], ["colspan", "1", "rowspan", "1"], [1, "container"], [2, "width", "40%", "height", "100%", "float", "left"], ["class", "update-friend-code-form", 3, "submit", 4, "ngIf"], ["color", "primary", 4, "ngIf"], [2, "width", "55%", "height", "100%", "float", "right"], ["class", "friend-code-update-button", "mat-icon-button", "", 3, "click", 4, "ngIf"], ["class", "friend-code-cancel-button", "mat-icon-button", "", 3, "click", 4, "ngIf"], [3, "submit"], [1, "formField"], ["matInput", "", "name", "friendCode", "placeholder", "Friend Code", "type", "text", "color", "primary", 1, "inputField", 3, "ngModel", "ngModelChange"], ["mat-raised-button", "", "color", "accent", 1, "btn-block"], [1, "friend-entry"], [1, "update-friend-code-form", 3, "submit"], ["color", "primary"], ["mat-icon-button", "", 1, "friend-code-update-button", 3, "click"], ["mat-icon-button", "", 1, "friend-code-cancel-button", 3, "click"]],
       template: function FriendsComponent_Template(rf, ctx) {
         if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-grid-list", 0);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "h1", 0);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-grid-tile", 1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " Friends List\n");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, FriendsComponent_mat_card_3_Template, 3, 1, "mat-card", 3);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "mat-grid-list", 1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "mat-grid-tile", 2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, FriendsComponent_mat_card_5_Template, 11, 5, "mat-card", 4);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](6, FriendsComponent_mat_card_6_Template, 3, 0, "mat-card", 5);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "mat-grid-tile", 4);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "mat-grid-tile", 6);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "mat-card", 5);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "mat-card", 7);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "h1");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "h1");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "Friend code:");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 6);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](9, FriendsComponent_form_9_Template, 5, 1, "form", 7);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](10, FriendsComponent_h2_10_Template, 2, 1, "h2", 8);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "Friend code:");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 9);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 8);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](12, FriendsComponent_button_12_Template, 3, 0, "button", 10);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](12, FriendsComponent_form_12_Template, 5, 1, "form", 9);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](13, FriendsComponent_button_13_Template, 3, 0, "button", 11);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](13, FriendsComponent_h2_13_Template, 2, 1, "h2", 10);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div", 11);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](15, FriendsComponent_button_15_Template, 3, 0, "button", 12);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](16, FriendsComponent_button_16_Template, 3, 0, "button", 13);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "mat-grid-tile", 6);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "mat-card", 7);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "h1");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](20, "Add a friend:");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "div", 8);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "form", 14);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function FriendsComponent_Template_form_submit_22_listener() {
+            return ctx.addFriend();
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "mat-form-field", 15);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "input", 16);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function FriendsComponent_Template_input_ngModelChange_24_listener($event) {
+            return ctx.addFriendCode = $event;
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "button", 17);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, " Update ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -3174,13 +3296,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         if (rf & 2) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("rowspan", ctx.friendsList.length);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("rowspan", ctx.friendsList.length ? ctx.friendsList.length + 1 : 2);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.friendsList);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.friendsList.length == 0);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
 
@@ -3197,10 +3323,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.updatingFriendCode);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.addFriendCode);
         }
       },
-      directives: [_angular_material_grid_list__WEBPACK_IMPORTED_MODULE_4__["MatGridList"], _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_4__["MatGridTile"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _angular_material_card__WEBPACK_IMPORTED_MODULE_6__["MatCard"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["NgForm"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_8__["MatFormField"], _angular_material_input__WEBPACK_IMPORTED_MODULE_9__["MatInput"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["NgModel"], _angular_material_button__WEBPACK_IMPORTED_MODULE_10__["MatButton"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_11__["MatIcon"]],
-      styles: [".container[_ngcontent-%COMP%] {\n  width: 90%;\n  height: 90%;\n}\n\n.friends-list-container[_ngcontent-%COMP%] {\n  width: 100%;\n  position: absolute;\n  top: 1vh;\n  height: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZnJpZW5kcy9DOlxcVXNlcnNcXEpJU0FST0NcXERvY3VtZW50c1xcUGVyc29uYWwgQ29kZVxcQm9va0hlcm9cXGNsaWVudC9zcmNcXGFwcFxcZnJpZW5kc1xcZnJpZW5kcy5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvZnJpZW5kcy9mcmllbmRzLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQXNDQTtFQUNFLFVBQUE7RUFDQSxXQUFBO0FDckNGOztBRHdDQTtFQUNFLFdBQUE7RUFDQSxrQkFBQTtFQUNBLFFBQUE7RUFDQSxZQUFBO0FDckNGIiwiZmlsZSI6InNyYy9hcHAvZnJpZW5kcy9mcmllbmRzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLy8gQGtleWZyYW1lcyBmYWRlSW4ge1xyXG4vLyAgIGZyb20ge1xyXG4vLyAgICAgdG9wOiAyMCU7XHJcbi8vICAgICBvcGFjaXR5OiAwO1xyXG4vLyAgIH1cclxuLy8gICB0byB7XHJcbi8vICAgICB0b3A6IDEwMDtcclxuLy8gICAgIG9wYWNpdHk6IDE7XHJcbi8vICAgfVxyXG4vLyB9XHJcblxyXG4vLyAud3JhcHBlciB7XHJcbi8vICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4vLyAgIGxlZnQ6IDUwJTtcclxuLy8gICB0b3A6IDUwJTtcclxuLy8gICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcclxuLy8gICBhbmltYXRpb246IGZhZGVJbiAxMDAwbXMgZWFzZTtcclxuLy8gfVxyXG5cclxuLy8gaDEge1xyXG4vLyAgIGZvbnQtc2l6ZTogNTBweDtcclxuLy8gICBtYXJnaW4tYm90dG9tOiAwO1xyXG4vLyAgIGxpbmUtaGVpZ2h0OiAxO1xyXG4vLyAgIGZvbnQtd2VpZ2h0OiA3MDA7XHJcbi8vIH1cclxuXHJcbi8vIC5kb3Qge1xyXG4vLyAgIGNvbG9yOiByZ2IoNjAsIDE1MCwgMjM2KTtcclxuLy8gfVxyXG5cclxuLy8gLmNvbnRhaW5lciB7XHJcbi8vICAgYmFja2dyb3VuZDogIzAwMDkxYjtcclxuLy8gICBjb2xvcjogI2ZmZjtcclxuLy8gICB3aWR0aDogMTAwJTtcclxuLy8gICBoZWlnaHQ6IDkzLjIlO1xyXG4vLyAgIG1hcmdpbjogMCAwIDAgMDtcclxuLy8gfVxyXG5cclxuLmNvbnRhaW5lciB7XHJcbiAgd2lkdGg6IDkwJTtcclxuICBoZWlnaHQ6IDkwJTtcclxufVxyXG5cclxuLmZyaWVuZHMtbGlzdC1jb250YWluZXIge1xyXG4gIHdpZHRoOiAxMDAlO1xyXG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICB0b3A6IDF2aDtcclxuICBoZWlnaHQ6IDEwMCU7XHJcbn1cclxuIiwiLmNvbnRhaW5lciB7XG4gIHdpZHRoOiA5MCU7XG4gIGhlaWdodDogOTAlO1xufVxuXG4uZnJpZW5kcy1saXN0LWNvbnRhaW5lciB7XG4gIHdpZHRoOiAxMDAlO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHRvcDogMXZoO1xuICBoZWlnaHQ6IDEwMCU7XG59Il19 */"]
+      directives: [_angular_material_grid_list__WEBPACK_IMPORTED_MODULE_5__["MatGridList"], _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_5__["MatGridTile"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], _angular_material_card__WEBPACK_IMPORTED_MODULE_7__["MatCard"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["NgForm"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_9__["MatFormField"], _angular_material_input__WEBPACK_IMPORTED_MODULE_10__["MatInput"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["NgModel"], _angular_material_button__WEBPACK_IMPORTED_MODULE_11__["MatButton"], _angular_material_icon__WEBPACK_IMPORTED_MODULE_12__["MatIcon"]],
+      styles: [".container[_ngcontent-%COMP%] {\n  width: 80%;\n  height: 95%;\n}\n\n.friends-list-container[_ngcontent-%COMP%] {\n  width: 90%;\n  position: absolute;\n  top: 1vh;\n  left: 4vw;\n  height: 100%;\n}\n\n.friend-entry[_ngcontent-%COMP%] {\n  margin: 0 0 10px 0;\n  height: 25vh;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZnJpZW5kcy9DOlxcVXNlcnNcXEpJU0FST0NcXERvY3VtZW50c1xcUGVyc29uYWwgQ29kZVxcQm9va0hlcm9cXGNsaWVudC9zcmNcXGFwcFxcZnJpZW5kc1xcZnJpZW5kcy5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvZnJpZW5kcy9mcmllbmRzLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsVUFBQTtFQUNBLFdBQUE7QUNDRjs7QURFQTtFQUNFLFVBQUE7RUFDQSxrQkFBQTtFQUNBLFFBQUE7RUFDQSxTQUFBO0VBQ0EsWUFBQTtBQ0NGOztBREVBO0VBQ0Usa0JBQUE7RUFDQSxZQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9mcmllbmRzL2ZyaWVuZHMuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY29udGFpbmVyIHtcclxuICB3aWR0aDogODAlO1xyXG4gIGhlaWdodDogOTUlO1xyXG59XHJcblxyXG4uZnJpZW5kcy1saXN0LWNvbnRhaW5lciB7XHJcbiAgd2lkdGg6IDkwJTtcclxuICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgdG9wOiAxdmg7XHJcbiAgbGVmdDogNHZ3O1xyXG4gIGhlaWdodDogMTAwJTtcclxufVxyXG5cclxuLmZyaWVuZC1lbnRyeSB7XHJcbiAgbWFyZ2luOiAwIDAgMTBweCAwO1xyXG4gIGhlaWdodDogMjV2aDtcclxufVxyXG4iLCIuY29udGFpbmVyIHtcbiAgd2lkdGg6IDgwJTtcbiAgaGVpZ2h0OiA5NSU7XG59XG5cbi5mcmllbmRzLWxpc3QtY29udGFpbmVyIHtcbiAgd2lkdGg6IDkwJTtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IDF2aDtcbiAgbGVmdDogNHZ3O1xuICBoZWlnaHQ6IDEwMCU7XG59XG5cbi5mcmllbmQtZW50cnkge1xuICBtYXJnaW46IDAgMCAxMHB4IDA7XG4gIGhlaWdodDogMjV2aDtcbn0iXX0= */"]
     });
     /*@__PURE__*/
 
@@ -3219,48 +3349,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           type: _users_service__WEBPACK_IMPORTED_MODULE_2__["UsersService"]
         }, {
           type: _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"]
+        }, {
+          type: _stats_service__WEBPACK_IMPORTED_MODULE_4__["StatsService"]
         }];
       }, {
         newFriendCode: [{
           type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }],
+        addFriendCode: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
         }]
       });
-    })();
-
-    var errorSnackBarComponent = function errorSnackBarComponent() {
-      _classCallCheck(this, errorSnackBarComponent);
-    };
-
-    errorSnackBarComponent.ɵfac = function errorSnackBarComponent_Factory(t) {
-      return new (t || errorSnackBarComponent)();
-    };
-
-    errorSnackBarComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
-      type: errorSnackBarComponent,
-      selectors: [["error-snack-bar"]],
-      decls: 2,
-      vars: 0,
-      template: function errorSnackBarComponent_Template(rf, ctx) {
-        if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Friend code is already in use...");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        }
-      },
-      encapsulation: 2
-    });
-    /*@__PURE__*/
-
-    (function () {
-      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](errorSnackBarComponent, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
-        args: [{
-          selector: 'error-snack-bar',
-          template: '<span>Friend code is already in use...</span>'
-        }]
-      }], null, null);
     })();
     /***/
 
@@ -3474,7 +3573,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*#__PURE__*/
     function () {
       function HomeComponent(auth, statsService) {
-        var _this13 = this;
+        var _this14 = this;
 
         _classCallCheck(this, HomeComponent);
 
@@ -3482,11 +3581,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.statsService = statsService;
 
         this.getUserDetails = function () {
-          _this13.auth.profile().subscribe(function (user) {
-            _this13.user = user;
-            _this13.stats = _this13.statsService.getStats(user.bookList);
+          _this14.auth.profile().subscribe(function (user) {
+            _this14.user = user;
+            _this14.stats = _this14.statsService.getStats(user.bookList);
           }, function (err) {
-            _this13.user = null;
+            _this14.user = null;
           });
         };
       }
@@ -3676,10 +3775,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(LoginComponent, [{
         key: "login",
         value: function login() {
-          var _this14 = this;
+          var _this15 = this;
 
           this.auth.login(this.credentials).subscribe(function () {
-            _this14.router.navigateByUrl('/profile');
+            _this15.router.navigateByUrl('/profile');
           }, function (err) {
             console.error(err);
           });
@@ -3858,10 +3957,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(ProfileComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this15 = this;
+          var _this16 = this;
 
           this.auth.profile().subscribe(function (user) {
-            _this15.details = user;
+            _this16.details = user;
           }, function (err) {
             console.error(err);
           });
@@ -4069,10 +4168,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "register",
         value: function register() {
-          var _this16 = this;
+          var _this17 = this;
 
           this.auth.register(this.credentials).subscribe(function () {
-            _this16.router.navigateByUrl('/profile');
+            _this17.router.navigateByUrl('/profile');
           }, function (err) {
             console.error(err);
           });
@@ -4273,7 +4372,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getAverageRating",
         value: function getAverageRating(bookList) {
-          if (bookList.length == 0) return '';
+          if (bookList.filter(function (entry) {
+            return entry.rating;
+          }).length == 0) return 'Nothing has been rated';
           var totalRating = 0;
           var numberOfRatings = 0;
           bookList.forEach(function (entry) {
@@ -4475,10 +4576,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return this.http.get('api/users/' + id.toString());
         }
       }, {
+        key: "addFriend",
+        value: function addFriend(friendCode) {
+          return this.http.post('api/users/add-friend', {
+            friendCode: friendCode
+          }, {
+            headers: {
+              Authorization: "Bearer ".concat(this.auth.getToken())
+            }
+          });
+        }
+      }, {
         key: "updateFriendCode",
         value: function updateFriendCode(friendCode) {
           return this.http.post('api/users/set-friend-code/', {
             friendCode: friendCode
+          }, {
+            headers: {
+              Authorization: "Bearer ".concat(this.auth.getToken())
+            }
           });
         }
       }]);

@@ -27,7 +27,8 @@ export class StatsService {
   }
 
   private getAverageRating(bookList: BookListEntry[]): string {
-    if (bookList.length == 0) return '';
+    if (bookList.filter((entry) => entry.rating).length == 0)
+      return 'Nothing has been rated';
 
     var totalRating = 0;
     var numberOfRatings = 0;

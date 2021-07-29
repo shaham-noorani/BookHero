@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthenticationService } from '../authentication.service';
+import { StatsService } from '../stats.service';
 import { UsersService } from '../users.service';
 import { Friend } from './friends';
 
@@ -14,31 +15,36 @@ export class FriendsComponent implements OnInit {
   friendsList: Friend[] = [];
 
   updatingFriendCode: boolean = false;
-
   @Input() newFriendCode: string;
+
+  @Input() addFriendCode: string;
 
   constructor(
     private auth: AuthenticationService,
     private users: UsersService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private stats: StatsService
   ) {}
 
   ngOnInit() {
-    this.auth.profile().subscribe(
-      (user) => {
-        this.friendCode = user.friendCode;
-        this.generateFriendsList(user.friends);
-      },
-      (err) => {
-        console.error(err);
-      }
-    );
+    this.updateFriendsList();
+  }
+
+  updateFriendsList(): void {
+    this.auth.profile().subscribe((user) => {
+      this.friendCode = user.friendCode;
+      this.generateFriendsList(user.friends);
+    });
   }
 
   generateFriendsList(friendIds: number[]): void {
+    this.friendsList = [];
     friendIds.forEach((id) => {
       this.users.getUser(id).subscribe((user) => {
-        this.friendsList.push(user);
+        this.friendsList.push({
+          stats: this.stats.getStats(user.bookList),
+          ...user,
+        });
       });
     });
   }
@@ -51,19 +57,25 @@ export class FriendsComponent implements OnInit {
         this.updatingFriendCode = false;
         this.newFriendCode = '';
       },
-      (err) => this.openErrorSnackBar()
+      (err) => this.openErrorSnackBar('This friend code is already in use...')
     );
   }
 
-  openErrorSnackBar(): void {
-    this._snackBar.openFromComponent(errorSnackBarComponent, {
-      duration: 5000,
-    });
+  addFriend(): void {
+    this.users.addFriend(this.addFriendCode).subscribe(
+      (res) => {
+        this.updateFriendsList();
+        this.addFriendCode = '';
+      },
+      (err) => {
+        this.openErrorSnackBar(
+          'No user found with friend code ' + this.addFriendCode
+        );
+      }
+    );
+  }
+
+  openErrorSnackBar(message: string): void {
+    this._snackBar.open(message, 'clear');
   }
 }
-
-@Component({
-  selector: 'error-snack-bar',
-  template: '<span>Friend code is already in use...</span>',
-})
-export class errorSnackBarComponent {}
