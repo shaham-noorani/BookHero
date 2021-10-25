@@ -23,13 +23,21 @@ import { StatsService, Stats } from '../stats.service';
   styleUrls: ['./booklist.component.scss'],
 })
 export class BooklistComponent implements OnInit {
-  bookList: BookListEntry[];
-  visibleBookList: BookListEntry[];
+  bookList: BookListEntry[] = [];
+  visibleBookList: BookListEntry[] = [];
 
-  @Input() filters: FormGroup;
+  @Input() filters: FormGroup = new FormGroup({});
   @Input() addBookFormGroup: FormGroup;
 
-  stats: Stats;
+  stats: Stats = {
+    completed: 0,
+    dropped: 0,
+    onHold: 0,
+    reading: 0,
+    planToRead: 0,
+    pagesRead: 0,
+    averageRating: '',
+  };
   ratings = Ratings;
 
   checkboxes = [
@@ -102,7 +110,7 @@ export class BooklistComponent implements OnInit {
 
   filterBookList = (): void => {
     this.visibleBookList = this.bookList.filter(
-      (entry) => this.filters.get(StatusMapToCamelCase.get(entry.status)).value
+      (entry) => this.filters.get(StatusMapToCamelCase.get(entry.status))?.value
     );
   };
 

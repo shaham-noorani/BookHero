@@ -38,8 +38,10 @@
           }}</mat-card-title>
           <mat-card-content>
             <h3>by {{ entry.book.author }}</h3>
-            <div class="line-clamp">
-              <p>{{ removeHTMLTags(entry.book.blurb) }}</p>
+            <div class="book-list-entry-blurb">
+              <p>
+                {{ removeHTMLTags(entry.book.blurb).substring(0, 300) + '...' }}
+              </p>
             </div>
           </mat-card-content>
         </div>
